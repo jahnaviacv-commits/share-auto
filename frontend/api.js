@@ -269,12 +269,26 @@ window.addEventListener('pageshow', (event) => {
 
 // Replace hardcoded mock names with real logged in user's profile
 function hydrateUserProfile(user) {
+  if (!user) return;
+
+  // On Admin portal, maintain clean single two-line identity: "Fleet Controller" / "SUPER ADMIN"
+  if (user.role === 'ADMIN') {
+    const adminHeader = document.querySelector('header .flex.flex-col.text-right');
+    if (adminHeader) {
+      adminHeader.innerHTML = `
+        <span class="font-body-sm text-body-sm text-on-surface font-bold leading-tight">Fleet Controller</span>
+        <span class="font-label-micro text-label-micro text-on-surface-variant uppercase">SUPER ADMIN</span>
+      `;
+    }
+    return;
+  }
+
   const fullName = user.full_name || 'Authenticated User';
   const names = fullName.trim().split(' ');
   const initials = (names[0][0] + (names.length > 1 ? names[names.length - 1][0] : '')).toUpperCase();
 
   // Replace text nodes containing mock names
-  const mockNames = ['Aarav Sharma', 'R. F. Sharma', 'Ramesh Sharma', 'Venkat Rao', 'Fleet Controller', 'Super Admin'];
+  const mockNames = ['Aarav Sharma', 'R. F. Sharma', 'Ramesh Sharma', 'Venkat Rao'];
   document.querySelectorAll('span, p, div, h1, h2, h3').forEach(el => {
     if (el.children.length === 0) {
       mockNames.forEach(mock => {
@@ -305,6 +319,11 @@ function hydrateUserProfile(user) {
 function injectLogoutButton(user) {
   const header = document.querySelector('header');
   if (!header || document.getElementById('zeroone-logout-btn')) return;
+
+  // On Admin portal, the red Logout / Sign Out of Operations Console button already exists in the header
+  if (header.querySelector('button[title*="Operations Console"], button[onclick*="api.logout()"]')) {
+    return;
+  }
 
   const logoutBtn = document.createElement('button');
   logoutBtn.id = 'zeroone-logout-btn';
