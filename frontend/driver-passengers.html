@@ -331,7 +331,7 @@
 </div>
 <!-- Action Button -->
 <div class="pt-2">
-<button class="w-full bg-slate-900/90 hover:bg-slate-50 text-white font-semibold py-3 px-4 rounded-xl shadow transition-all flex items-center justify-center gap-2 text-sm" style="background-color: rgb(15, 23, 42);"><span class="material-symbols-outlined text-[20px]">navigation</span><span class="">Drive to this Stand • Navigate to Bay 1</span></button>
+<button onclick="driveToStand()" class="w-full bg-slate-900/90 hover:bg-slate-800 text-white font-semibold py-3 px-4 rounded-xl shadow transition-all flex items-center justify-center gap-2 text-sm cursor-pointer" style="background-color: rgb(15, 23, 42);"><span class="material-symbols-outlined text-[20px]">navigation</span><span id="btn-drive-text">Drive to this Stand • Navigate to Bay 1</span></button>
 <div class="flex items-center justify-center gap-1.5 mt-2.5 text-xs text-slate-500">
 <span class="material-symbols-outlined text-[15px] text-emerald-600">near_me</span>
 <span class="">Your auto is 650m away (ETA ~2 mins)</span>
@@ -443,7 +443,7 @@
 </div>
 </div>
 <!-- Recenter button -->
-<button class="absolute top-3 right-3 w-8 h-8 bg-white hover:bg-slate-50 border border-slate-200 rounded-lg shadow-sm flex items-center justify-center text-slate-700 transition-colors" title="Center Driver Position">
+<button onclick="centerDriverPosition()" class="absolute top-3 right-3 w-8 h-8 bg-white hover:bg-slate-50 border border-slate-200 rounded-lg shadow-sm flex items-center justify-center text-slate-700 transition-colors cursor-pointer" title="Center Driver Position">
 <span class="material-symbols-outlined text-[18px]">my_location</span>
 </button>
 </div>
@@ -516,9 +516,12 @@
       }
     };
 
+    let currentSelectedStation = 'lingampally';
+
     function selectStation(key) {
       const data = stationData[key];
       if (!data) return;
+      currentSelectedStation = key;
 
       // Update Inspector UI
       document.getElementById('inspector-name').innerText = data.name;
@@ -535,6 +538,11 @@
       document.getElementById('split-primary-count').innerText = data.splitPrimary;
       document.getElementById('split-secondary-count').innerText = data.splitSecondary;
 
+      const driveBtnText = document.getElementById('btn-drive-text');
+      if (driveBtnText) {
+        driveBtnText.innerText = `Drive to this Stand • Navigate to ${data.name.split(' ')[0]}`;
+      }
+
       // Update Card Visual States
       ['lingampally', 'bhel', 'miyapur'].forEach(id => {
         const card = document.getElementById('card-' + id);
@@ -548,6 +556,24 @@
         }
       });
     }
+
+    function driveToStand() {
+      const data = stationData[currentSelectedStation] || {};
+      const name = data.name || "Selected Stand";
+      alert(`Repositioning Confirmed!\nAuto ZO-DRV-4102 routed to ${name}.\nDispatch queue updated.`);
+    }
+
+    function centerDriverPosition() {
+      alert("Driver Position Centered:\nLingampally Hub (ZO-4102)\nGPS Accuracy: 3m (NavIC / GPS Synced)");
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const stationParam = urlParams.get('station');
+      if (stationParam && stationData[stationParam.toLowerCase()]) {
+        selectStation(stationParam.toLowerCase());
+      }
+    });
   </script>
 
 

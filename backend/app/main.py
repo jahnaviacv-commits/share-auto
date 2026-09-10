@@ -5,7 +5,7 @@ import logging
 import os
 
 from app.core.config import settings
-from app.routers import auth, corridors, rides, drivers, admin, chat
+from app.routers import auth, corridors, rides, drivers, admin, chat, demand
 from app.websocket.manager import ws_manager
 from app.services.simulator import simulator
 
@@ -64,6 +64,7 @@ app.include_router(rides.router, prefix=settings.API_V1_STR)
 app.include_router(drivers.router, prefix=settings.API_V1_STR)
 app.include_router(admin.router, prefix=settings.API_V1_STR)
 app.include_router(chat.router, prefix=settings.API_V1_STR)
+app.include_router(demand.router, prefix=settings.API_V1_STR)
 
 @app.get("/api/health", tags=["System"])
 async def health_check():
@@ -71,7 +72,8 @@ async def health_check():
         "status": "healthy",
         "service": "ZeroOne Mobility API",
         "corridors_active": 5,
-        "telemetry": "Active (NavIC / GPS Synced)"
+        "telemetry": "Active (NavIC / GPS Synced)",
+        "demand_model": "RandomForestRegressor Ready"
     }
 
 # WebSockets
@@ -104,16 +106,33 @@ async def websocket_ride_tracking(websocket: WebSocket, ride_id: str):
 
 # Mount Frontend Static Files
 from fastapi.staticfiles import StaticFiles
-from fastapi.responses import RedirectResponse
+from fastapi.responses import FileResponse
 
-frontend_dir = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "frontend"))
-if not os.path.exists(frontend_dir):
-    frontend_dir = os.path.abspath("frontend")
+frontend_candidates = [
+    os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "frontend")),
+    os.path.abspath(os.path.join(os.getcwd(), "frontend")),
+    os.path.abspath("frontend")
+]
+frontend_dir = None
+for candidate in frontend_candidates:
+    if os.path.exists(candidate) and os.path.isdir(candidate):
+        frontend_dir = candidate
+        break
 
-if os.path.exists(frontend_dir):
-    @app.get("/")
-    async def index_redirect():
-        return RedirectResponse(url="/index.html")
+if frontend_dir:
+    index_path = os.path.join(frontend_dir, "index.html")
+
+    @app.get("/", include_in_schema=False)
+    async def serve_root():
+        if os.path.exists(index_path):
+            return FileResponse(index_path, media_type="text/html")
+        return {"status": "ZeroOne Mobility API", "detail": "index.html not found"}
+
+    @app.get("/index.html", include_in_schema=False)
+    async def serve_index():
+        if os.path.exists(index_path):
+            return FileResponse(index_path, media_type="text/html")
+        return {"status": "ZeroOne Mobility API", "detail": "index.html not found"}
 
     app.mount("/", StaticFiles(directory=frontend_dir, html=True), name="frontend")
 

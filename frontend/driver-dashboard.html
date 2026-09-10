@@ -390,7 +390,7 @@
 </div>
 </div>
 </div>
-<button class="w-full mt-1 py-2 text-center text-xs font-semibold text-blue-600 hover:text-blue-700 bg-blue-50 hover:bg-blue-100/70 rounded-lg transition-colors">
+<button onclick="window.location.href='driver-demand-ai.html'" class="w-full mt-1 py-2 text-center text-xs font-semibold text-blue-600 hover:text-blue-700 bg-blue-50 hover:bg-blue-100/70 rounded-lg transition-colors cursor-pointer">
               Open Demand AI Predictions →
             </button>
 </div>
@@ -469,6 +469,12 @@
         kpiStatusTitle.textContent = "OFFLINE";
         kpiStatusTitle.className = "text-2xl font-bold text-slate-400";
         kpiStatusDesc.textContent = "Standby mode • Auto not visible in commuter queue";
+      }
+
+      if (window.api && typeof window.api.patch === 'function') {
+        window.api.patch('/api/driver/status', { is_online: isOnline }).catch(err => {
+          console.warn('Driver status sync error:', err);
+        });
       }
     }
   </script>

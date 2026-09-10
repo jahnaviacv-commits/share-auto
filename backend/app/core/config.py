@@ -10,8 +10,8 @@ class Settings(BaseSettings):
     ALGORITHM: str = "HS256"
     ACCESS_TOKEN_EXPIRE_MINUTES: int = 60 * 24  # 24 hours
 
-    DATABASE_URL: str = "postgresql+asyncpg://postgres:1234@localhost:5432/zeroone_db"
-    SYNC_DATABASE_URL: str = "postgresql://postgres:1234@localhost:5432/zeroone_db"
+    DATABASE_URL: str = "sqlite+aiosqlite:///./zeroone.db"
+    SYNC_DATABASE_URL: str = "sqlite:///./zeroone.db"
 
     CORS_ORIGINS: List[str] = ["*"]
 
