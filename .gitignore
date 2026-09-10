@@ -1,0 +1,27 @@
+# Virtual Environment
+venv/
+env/
+.env.local
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.sqlite
+*.db
+zeroone.db
+
+# Pytest / Test coverage
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDE / Editor artifacts
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Antigravity artifacts
+.system_generated/
+scratch/

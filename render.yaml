@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: shareauto-transit
+    env: python
+    region: oregon
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
+      - key: SECRET_KEY
+        generateValue: true
+      - key: DATABASE_URL
+        value: sqlite+aiosqlite:///./zeroone.db
+      - key: SYNC_DATABASE_URL
+        value: sqlite:///./zeroone.db
+
+# Optional Managed PostgreSQL on Render:
+# databases:
+#   - name: zeroone-db
+#     databaseName: zeroone_db
+#     user: postgres
+#     plan: free

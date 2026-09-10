@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <title>ShareAuto • ZeroOne Mobility Transit</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect">
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body {
+      font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      overscroll-behavior: none;
+    }
+    .glass-card {
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.95);
+      box-shadow: 0 20px 40px -15px rgba(15, 23, 42, 0.07), 0 0 0 1px rgba(226, 232, 240, 0.6);
+    }
+    .glass-card:hover {
+      box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.12), 0 0 0 1px rgba(148, 163, 184, 0.4);
+    }
+    .glass-nav {
+      background: rgba(255, 255, 255, 0.7);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.8);
+    }
+    /* Urban road & Hyderabad skyline atmosphere */
+    .bg-mobility {
+      background: linear-gradient(180deg, #f0f6ff 0%, #f8fafc 40%, #f1f5f9 100%);
+    }
+    .skyline-glow {
+      background: radial-gradient(circle at 80% 20%, rgba(251, 191, 36, 0.15) 0%, rgba(59, 130, 246, 0.08) 40%, transparent 70%);
+    }
+  </style>
+</head>
+<body class="bg-mobility text-slate-800 min-h-screen flex flex-col justify-between relative selection:bg-blue-600 selection:text-white overflow-x-hidden">
+
+  <!-- Atmospheric Background Visual Elements -->
+  <div class="fixed inset-0 pointer-events-none z-0 skyline-glow"></div>
+  
+  <!-- Subtle decorative Hyderabad transit highway backdrop layer -->
+  <div class="fixed inset-0 pointer-events-none z-0 opacity-25 overflow-hidden">
+    <!-- Elevated Metro Bridge Silhouettes -->
+    <svg class="absolute top-12 -right-20 w-[900px] h-[350px] text-slate-300" viewBox="0 0 900 350" fill="none" xmlns="http://www.w3.org/2000/svg">
+      <path d="M0 120 Q 300 80, 600 130 T 900 110" stroke="currentColor" stroke-width="8" stroke-linecap="round"/>
+      <path d="M0 132 Q 300 92, 600 142 T 900 122" stroke="currentColor" stroke-width="4"/>
+      <!-- Pillars -->
+      <rect x="220" y="105" width="28" height="240" rx="6" fill="currentColor"/>
+      <rect x="520" y="125" width="32" height="220" rx="6" fill="currentColor"/>
+      <rect x="780" y="115" width="28" height="230" rx="6" fill="currentColor"/>
+      <!-- Distant Charminar Minaret Hint -->
+      <path d="M720 200 L720 70 L726 60 L732 70 L732 200 Z" fill="currentColor" opacity="0.4"/>
+      <path d="M760 200 L760 70 L766 60 L772 70 L772 200 Z" fill="currentColor" opacity="0.4"/>
+      <rect x="715" y="110" width="62" height="80" rx="4" fill="currentColor" opacity="0.3"/>
+    </svg>
+    <!-- Highway Road Lines at the bottom -->
+    <div class="absolute bottom-0 left-0 right-0 h-48 border-t-2 border-slate-200/50">
+      <div class="w-full h-full flex items-center justify-around opacity-40">
+        <div class="w-24 h-1.5 bg-slate-400 rounded-full"></div>
+        <div class="w-24 h-1.5 bg-slate-400 rounded-full"></div>
+        <div class="w-24 h-1.5 bg-slate-400 rounded-full"></div>
+        <div class="w-24 h-1.5 bg-slate-400 rounded-full"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Header -->
+  <header class="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-10 pt-8 pb-4 flex items-center justify-between">
+    <!-- Brand Logo -->
+    <div class="flex flex-col">
+      <div class="flex items-center gap-1.5 cursor-pointer" onclick="showOpeningView()">
+        <span class="text-2xl sm:text-[28px] font-black tracking-tight text-slate-900 leading-none">zeroone</span>
+      </div>
+      <span class="text-[9.5px] sm:text-[10.5px] font-extrabold tracking-[0.22em] text-slate-500 uppercase mt-1">
+        MOBILITY TRANSIT
+      </span>
+    </div>
+
+    <!-- Location Badge -->
+    <div class="flex items-center gap-2 px-3.5 py-1.5 rounded-full glass-nav text-xs font-semibold text-slate-600 shadow-2xs">
+      <span class="material-symbols-outlined text-[16px] text-slate-400">location_on</span>
+      <span>Hyderabad • Telangana</span>
+    </div>
+  </header>
+
+  <!-- Main Container -->
+  <main class="relative z-10 flex-1 max-w-7xl w-full mx-auto px-6 sm:px-10 py-6 sm:py-12 flex flex-col justify-center">
+
+    <!-- VIEW 1: OPENING PAGE (WHO ARE YOU? - 3 CHOICES) -->
+    <div id="openingView" class="space-y-10">
+      <!-- Hero Header -->
+      <div class="space-y-3 max-w-2xl">
+        <h1 class="text-5xl sm:text-6xl md:text-7xl font-black text-slate-900 tracking-tight leading-none">
+          Share<span class="text-blue-600">Auto</span>
+        </h1>
+        <h2 class="text-2xl sm:text-3xl font-bold text-slate-800 tracking-tight">
+          Share the ride. Save the fare.
+        </h2>
+        <p class="text-slate-500 text-sm sm:text-base font-normal max-w-lg leading-relaxed pt-1">
+          Smart shared-auto mobility connecting passengers, drivers and transit operations.
+        </p>
+      </div>
+
+      <!-- Portal Choice Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 pt-4">
+        
+        <!-- CARD 1: PASSENGER -->
+        <div class="glass-card rounded-3xl p-7 sm:p-8 flex flex-col justify-between transition-all duration-300 group hover:-translate-y-1.5 relative overflow-hidden">
+          <div class="space-y-5">
+            <!-- Icon Badge -->
+            <div class="w-14 h-14 rounded-2xl bg-blue-50 border border-blue-100 flex items-center justify-center text-blue-600 shadow-2xs group-hover:scale-105 transition-transform">
+              <span class="material-symbols-outlined text-[28px]">person</span>
+            </div>
+            <!-- Content -->
+            <div class="space-y-2">
+              <h3 class="text-2xl font-bold text-slate-900 tracking-tight">Passenger</h3>
+              <p class="text-xs sm:text-[13px] text-slate-500 leading-relaxed">
+                Find shared autos and request a ride from your pickup station to your destination.
+              </p>
+            </div>
+          </div>
+          <div class="pt-8">
+            <button onclick="openLogin('PASSENGER')" class="w-full py-3.5 px-5 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm tracking-wide shadow-md shadow-blue-600/20 hover:shadow-lg hover:shadow-blue-600/30 transition-all flex items-center justify-center gap-2 cursor-pointer group/btn">
+              <span>Passenger Login</span>
+              <span class="material-symbols-outlined text-[18px] group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- CARD 2: DRIVER -->
+        <div class="glass-card rounded-3xl p-7 sm:p-8 flex flex-col justify-between transition-all duration-300 group hover:-translate-y-1.5 relative overflow-hidden">
+          <div class="space-y-5">
+            <!-- Icon Badge -->
+            <div class="w-14 h-14 rounded-2xl bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-600 shadow-2xs group-hover:scale-105 transition-transform">
+              <span class="material-symbols-outlined text-[28px]">electric_rickshaw</span>
+            </div>
+            <!-- Content -->
+            <div class="space-y-2">
+              <h3 class="text-2xl font-bold text-slate-900 tracking-tight">Driver</h3>
+              <p class="text-xs sm:text-[13px] text-slate-500 leading-relaxed">
+                Manage your shared-auto trips, view passenger demand and operate your assigned route.
+              </p>
+            </div>
+          </div>
+          <div class="pt-8">
+            <button onclick="openLogin('DRIVER')" class="w-full py-3.5 px-5 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm tracking-wide shadow-md shadow-emerald-600/20 hover:shadow-lg hover:shadow-emerald-600/30 transition-all flex items-center justify-center gap-2 cursor-pointer group/btn">
+              <span>Driver Login</span>
+              <span class="material-symbols-outlined text-[18px] group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- CARD 3: ADMIN -->
+        <div class="glass-card rounded-3xl p-7 sm:p-8 flex flex-col justify-between transition-all duration-300 group hover:-translate-y-1.5 relative overflow-hidden">
+          <div class="space-y-5">
+            <!-- Icon Badge -->
+            <div class="w-14 h-14 rounded-2xl bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600 shadow-2xs group-hover:scale-105 transition-transform">
+              <span class="material-symbols-outlined text-[28px]">security</span>
+            </div>
+            <!-- Content -->
+            <div class="space-y-2">
+              <h3 class="text-2xl font-bold text-slate-900 tracking-tight">Admin</h3>
+              <p class="text-xs sm:text-[13px] text-slate-500 leading-relaxed">
+                Manage the ShareAuto network, drivers, autos, routes and live operations.
+              </p>
+            </div>
+          </div>
+          <div class="pt-8">
+            <button onclick="openLogin('ADMIN')" class="w-full py-3.5 px-5 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm tracking-wide shadow-md shadow-indigo-600/20 hover:shadow-lg hover:shadow-indigo-600/30 transition-all flex items-center justify-center gap-2 cursor-pointer group/btn">
+              <span>Admin Login</span>
+              <span class="material-symbols-outlined text-[18px] group-hover/btn:translate-x-1 transition-transform">arrow_forward</span>
+            </button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- VIEW 2: DEDICATED SIMPLE LOGIN VIEW -->
+    <div id="loginView" class="hidden max-w-md w-full mx-auto space-y-6">
+      <!-- Back to ShareAuto Header -->
+      <div class="flex items-center justify-between pb-2">
+        <button onclick="showOpeningView()" class="text-xs font-bold text-slate-500 hover:text-slate-900 transition-colors flex items-center gap-1 cursor-pointer py-1.5 px-3 rounded-xl hover:bg-white/80">
+          <span class="material-symbols-outlined text-[18px]">arrow_back</span>
+          <span>Back to ShareAuto</span>
+        </button>
+        <span id="loginRoleBadge" class="px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-blue-50 text-blue-600 border border-blue-100">
+          Passenger Login
+        </span>
+      </div>
+
+      <!-- Login Glass Card -->
+      <div class="glass-card rounded-3xl p-8 sm:p-9 space-y-6">
+        <div class="space-y-1.5 text-left">
+          <h2 id="loginTitle" class="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">Sign In</h2>
+          <p id="loginSubtitle" class="text-xs sm:text-sm text-slate-500">Enter your credentials to access the portal.</p>
+        </div>
+
+        <!-- Error Banner -->
+        <div id="loginError" class="hidden p-3.5 rounded-2xl bg-red-50 border border-red-200/80 text-red-600 text-xs font-medium flex items-center gap-2.5">
+          <span class="material-symbols-outlined text-base shrink-0">error</span>
+          <span id="loginErrorMsg">Invalid credentials</span>
+        </div>
+
+        <!-- Form -->
+        <form id="authForm" onsubmit="handleLoginSubmit(event)" class="space-y-4">
+          <div>
+            <label id="identifierLabel" class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Email / Phone</label>
+            <input type="text" id="authIdentifier" required autocomplete="username" class="w-full px-4 py-3.5 rounded-2xl bg-white/90 border border-slate-200 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-600/10 transition-all shadow-2xs" placeholder="Enter your email or phone">
+          </div>
+
+          <div>
+            <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-2">Password</label>
+            <input type="password" id="authPassword" required autocomplete="current-password" class="w-full px-4 py-3.5 rounded-2xl bg-white/90 border border-slate-200 text-slate-900 placeholder-slate-400 text-sm focus:outline-none focus:border-blue-600 focus:ring-2 focus:ring-blue-600/10 transition-all shadow-2xs" placeholder="••••••••">
+          </div>
+
+          <button type="submit" id="authSubmitBtn" class="w-full py-4 px-5 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm tracking-wide shadow-md shadow-blue-600/25 hover:shadow-lg hover:shadow-blue-600/35 transition-all flex items-center justify-center gap-2 cursor-pointer mt-3">
+            <span id="authSubmitBtnText">Sign In</span>
+            <span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+          </button>
+        </form>
+
+        <!-- Quick Demo Hint (For seamless presentation demo) -->
+        <div class="pt-4 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-400">
+          <span class="font-medium">Demo account:</span>
+          <button type="button" onclick="fillDemoCredentials()" id="demoFillBtn" class="font-bold text-blue-600 hover:underline cursor-pointer">
+            Use Demo Login
+          </button>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="relative z-10 w-full max-w-7xl mx-auto px-6 sm:px-10 py-6 text-center text-xs text-slate-400 font-medium">
+    <span>ZeroOne Mobility Platform • Fixed-Route Shared Auto Transit</span>
+  </footer>
+
+  <script>
+    let activeRole = 'PASSENGER';
+
+    const ROLE_CONFIGS = {
+      PASSENGER: {
+        badgeText: 'Passenger Login',
+        badgeClass: 'px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-blue-50 text-blue-600 border border-blue-100',
+        title: 'Passenger Sign In',
+        subtitle: 'Enter your registered email or phone to access the pickup portal.',
+        label: 'Email / Phone',
+        placeholder: 'aarav@zeroone.com or +91 98490 12345',
+        btnBg: 'w-full py-4 px-5 rounded-2xl bg-blue-600 hover:bg-blue-700 text-white font-bold text-sm tracking-wide shadow-md shadow-blue-600/25 hover:shadow-lg hover:shadow-blue-600/35 transition-all flex items-center justify-center gap-2 cursor-pointer mt-3',
+        demoUser: 'aarav@zeroone.com',
+        demoPass: 'passenger123',
+        targetPage: 'request-shared-auto.html'
+      },
+      DRIVER: {
+        badgeText: 'Driver Console',
+        badgeClass: 'px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-emerald-50 text-emerald-600 border border-emerald-100',
+        title: 'Driver / Pilot Sign In',
+        subtitle: 'Enter your Driver ID or email to access your shift console.',
+        label: 'Driver ID / Email',
+        placeholder: 'ZO-DRV-4102 or venkat@zeroone.com',
+        btnBg: 'w-full py-4 px-5 rounded-2xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm tracking-wide shadow-md shadow-emerald-600/25 hover:shadow-lg hover:shadow-emerald-600/35 transition-all flex items-center justify-center gap-2 cursor-pointer mt-3',
+        demoUser: 'venkat@zeroone.com',
+        demoPass: 'driver123',
+        targetPage: 'driver-dashboard.html'
+      },
+      ADMIN: {
+        badgeText: 'Fleet Controller',
+        badgeClass: 'px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-indigo-50 text-indigo-600 border border-indigo-100',
+        title: 'Admin Sign In',
+        subtitle: 'Authorized access for live corridor tracking and fleet operations.',
+        label: 'Admin Email',
+        placeholder: 'admin@zeroone.com',
+        btnBg: 'w-full py-4 px-5 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm tracking-wide shadow-md shadow-indigo-600/25 hover:shadow-lg hover:shadow-indigo-600/35 transition-all flex items-center justify-center gap-2 cursor-pointer mt-3',
+        demoUser: 'admin@zeroone.com',
+        demoPass: 'admin123',
+        targetPage: 'admin-operations-dashboard.html'
+      }
+    };
+
+    // ON PAGE LOAD: ALWAYS SHOW OPENING PAGE OR SELECTED ROLE LOGIN (NO AUTO-LOGIN)
+    document.addEventListener('DOMContentLoaded', () => {
+      // Check if redirected with specific role (e.g. ?role=ADMIN or ?role=DRIVER)
+      const urlParams = new URLSearchParams(window.location.search);
+      const requestedRole = urlParams.get('role');
+      if (requestedRole && ROLE_CONFIGS[requestedRole.toUpperCase()]) {
+        openLogin(requestedRole.toUpperCase());
+      } else {
+        showOpeningView();
+      }
+    });
+
+    function showOpeningView() {
+      // Clean query string without reloading
+      if (window.location.search) {
+        window.history.replaceState({}, document.title, window.location.pathname);
+      }
+      document.getElementById('loginView').classList.add('hidden');
+      document.getElementById('openingView').classList.remove('hidden');
+    }
+
+    function openLogin(role) {
+      activeRole = role;
+      const config = ROLE_CONFIGS[role];
+      if (!config) return;
+
+      document.getElementById('openingView').classList.add('hidden');
+      document.getElementById('loginView').classList.remove('hidden');
+      document.getElementById('loginError').classList.add('hidden');
+
+      document.getElementById('loginRoleBadge').className = config.badgeClass;
+      document.getElementById('loginRoleBadge').textContent = config.badgeText;
+      document.getElementById('loginTitle').textContent = config.title;
+      document.getElementById('loginSubtitle').textContent = config.subtitle;
+      document.getElementById('identifierLabel').textContent = config.label;
+      document.getElementById('authIdentifier').placeholder = config.placeholder;
+      document.getElementById('authIdentifier').value = '';
+      document.getElementById('authPassword').value = '';
+      document.getElementById('authSubmitBtn').className = config.btnBg;
+
+      const submitText = document.getElementById('authSubmitBtnText');
+      submitText.textContent = `Sign In as ${role.charAt(0) + role.slice(1).toLowerCase()}`;
+    }
+
+    function fillDemoCredentials() {
+      const config = ROLE_CONFIGS[activeRole];
+      if (!config) return;
+      document.getElementById('authIdentifier').value = config.demoUser;
+      document.getElementById('authPassword').value = config.demoPass;
+    }
+
+    async function handleLoginSubmit(e) {
+      e.preventDefault();
+      const identifier = document.getElementById('authIdentifier').value.trim();
+      const password = document.getElementById('authPassword').value;
+      const errBox = document.getElementById('loginError');
+      const errMsg = document.getElementById('loginErrorMsg');
+      const submitBtn = document.getElementById('authSubmitBtn');
+      const submitText = document.getElementById('authSubmitBtnText');
+
+      errBox.classList.add('hidden');
+      submitBtn.disabled = true;
+      submitText.textContent = 'Authenticating...';
+
+      try {
+        const res = await fetch('/api/auth/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ identifier, password })
+        });
+
+        const data = await res.json();
+        if (!res.ok) {
+          throw new Error(data.detail || 'Invalid email or password');
+        }
+
+        // Enforce role authorization match
+        if (data.role !== activeRole) {
+          throw new Error(`Access restricted: This account has role '${data.role}'. Please use the ${data.role.toLowerCase()} portal.`);
+        }
+
+        // Save fresh authenticated session
+        localStorage.setItem('zeroone_token', data.access_token);
+        localStorage.setItem('zeroone_user', JSON.stringify(data));
+
+        // Redirect to corresponding Stitch portal
+        const config = ROLE_CONFIGS[activeRole];
+        window.location.replace(config.targetPage);
+
+      } catch (err) {
+        errBox.classList.remove('hidden');
+        errMsg.textContent = err.message;
+        submitBtn.disabled = false;
+        submitText.textContent = `Sign In as ${activeRole.charAt(0) + activeRole.slice(1).toLowerCase()}`;
+      }
+    }
+  </script>
+</body>
+</html>

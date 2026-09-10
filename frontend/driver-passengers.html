@@ -1,0 +1,557 @@
+<!DOCTYPE html><html lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Live Passenger Demand &amp; Corridor Staging - ZeroOne</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+            }
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    @layer base {
+      html, body { margin: 0; padding: 0; }
+      body { overscroll-behavior: none; }
+    }
+    ::-webkit-scrollbar { display: none; }
+  </style>
+</head>
+<body class="bg-slate-50 font-sans text-slate-800 antialiased min-h-screen"><svg class="inline-defs-container" aria-hidden="true" style="position:absolute;width:0;height:0;overflow:hidden"></svg>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Live Passenger Demand &amp; Corridor Staging - ZeroOne</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+            }
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    @layer base {
+      html, body { margin: 0; padding: 0; }
+      body { overscroll-behavior: none; }
+    }
+    ::-webkit-scrollbar { display: none; }
+  </style>
+
+
+<!-- Left Sidebar -->
+<aside class="fixed left-0 top-0 h-screen w-64 bg-white text-slate-800 border-r border-slate-200 z-50 flex flex-col justify-between">
+<div class="flex flex-col">
+<!-- Logo header -->
+<div class="h-16 px-6 flex items-center gap-3 border-b border-slate-100"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuBLcR7_Q5bg81_QBCqqt2UKvXyxRjWZ3MNrPV-8aTLWoW7t8Rvtxd2xyG3R2bsKo3tvzaddJ-qLI4LWMqhqfOHXcmz3ELJGza6qxXWbD4kfUFmXLcE55jTjwoXax4c9UxytLaoYoUoH9b-MHHlmBhnupKqUd3aV5w3vOd3srZndl9FvVL6ObhmABWgRZlM0p3H53yQWc8WkBtYD2zUUInX0G5oPjqGngokK5pXYVD5qyxTUjeGPfWoKWQS7UPmr-jf53Vs" alt="ZeroOne" class="max-w-full object-contain h-10"></div>
+<!-- Navigation links -->
+<div class="px-3 pt-6">
+<div class="px-3 mb-2 flex items-center justify-between text-[11px] font-semibold text-slate-400 uppercase tracking-wider">
+<span class="">Driver Telemetry</span>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-[20px] text-slate-500">dashboard</span>
+<span class="">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-[20px] text-slate-500">trending_up</span>
+<span class="">Demand AI</span>
+</a>
+<!-- Active Pill: Deep Navy Pill with White text and indicator -->
+<a class="flex items-center justify-between px-3 py-2.5 rounded-xl bg-[#0f172a] text-white shadow-sm text-sm font-medium transition-all" href="#">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-[20px] text-white" style="font-variation-settings: &quot;FILL&quot; 1;">group</span>
+<span class="text-white font-semibold">Passengers</span>
+</div>
+<span class="w-1.5 h-1.5 rounded-full bg-white"></span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-[20px] text-slate-500">account_balance_wallet</span>
+<span class="">Earnings</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-xl text-slate-600 hover:text-slate-900 hover:bg-slate-50 transition text-sm font-medium" href="#">
+<span class="material-symbols-outlined text-[20px] text-slate-500">settings</span>
+<span class="">Profile &amp; Settings</span>
+</a>
+</nav>
+</div>
+</div>
+<!-- Active Driver Bottom Card -->
+<div class="p-4 border-t border-slate-100">
+<div class="bg-slate-50 border border-slate-200 rounded-xl p-3 flex items-center gap-3 text-slate-700 shadow-sm">
+<div class="relative">
+<img alt="Venkat Rao" class="w-10 h-10 rounded-full object-cover border border-slate-200" src="https://lh3.googleusercontent.com/aida/AEtjO1WWF-a_5FL89lTZxgy4CLC6TAgQ7MBKv2Gqq4NrnUiQoGaXXiuPv2Z8dabEi9PLUHZvGu9F9WL4Kfu3-JvEl_S_A6mv45RHiz1sUVJKC8L6qiUIkbUCtFn4doqYueTJW7osGR5uVAPGUrfNBINVqvPUoe2Go6-A9eOje8quwx4cjvTVU0U5FcxoqHODtg6Ay_7yp_Ypbh3EsRl6hGvFqAWl79D3kcIaU5_Epf9retBzkbmzc0CsAajF5nyu">
+<span class="absolute bottom-0 right-0 w-2.5 h-2.5 bg-emerald-500 border-2 border-white rounded-full"></span>
+</div>
+<div class="flex flex-col min-w-0">
+<span class="text-xs font-bold text-slate-900 truncate">Venkat Rao</span>
+<span class="text-[11px] text-slate-500 font-medium">ID: ZO-DRV-4102</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- Main Content Wrapper -->
+<div class="pl-64">
+<!-- Top Header -->
+<header class="sticky top-0 z-40 h-16 bg-white border-b border-slate-200 px-8 flex items-center justify-between">
+<!-- Breadcrumbs & Status -->
+<div class="flex items-center gap-3 text-sm">
+<span class="text-slate-500 font-medium">Corridor Fleet</span>
+<span class="text-slate-300">/</span>
+<span class="text-slate-900 font-semibold">Lingampally ⇄ BHEL ⇄ Miyapur</span>
+<span class="text-slate-300">|</span>
+<div class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-blue-50 text-blue-700 text-xs font-semibold border border-blue-100">
+<span class="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></span>
+          Live Radar Active • 15s sync
+        </div>
+</div>
+<!-- Right Header Actions -->
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 bg-emerald-50 text-emerald-700 border border-emerald-200/70 px-3 py-1.5 rounded-full text-xs font-semibold">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+<span class="">Online • GPS Synced</span>
+</div>
+<div class="h-5 w-px bg-slate-200"></div>
+<div class="flex items-center gap-2">
+<div class="flex items-center gap-1 bg-amber-50 text-amber-800 border border-amber-200 px-2.5 py-1 rounded-md text-xs font-bold">
+<span class="material-symbols-outlined text-[15px] text-amber-500" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="">4.9</span>
+</div>
+<span class="text-xs font-semibold text-slate-700">Venkat Rao</span>
+</div>
+</div>
+</header>
+<!-- Page Content -->
+<main class="p-8 max-w-7xl mx-auto space-y-6">
+<!-- Page Header Title -->
+<div>
+<h1 class="text-2xl font-bold text-slate-900 tracking-tight">Live Passenger Demand &amp; Corridor Staging</h1>
+<p class="text-sm text-slate-500 mt-1">Real-time passenger presence and waiting queues across authorized corridor stands.</p>
+</div>
+<!-- Station Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+<!-- Node 1: Lingampally (Selected / High Demand) -->
+<div class="cursor-pointer bg-white rounded-xl border-2 border-blue-600 shadow-sm hover:shadow-md transition-all p-5 flex flex-col justify-between relative overflow-hidden" id="card-lingampally" onclick="selectStation('lingampally')">
+<div class="absolute top-0 right-0 w-24 h-24 bg-blue-50/50 rounded-full -mr-8 -mt-8 pointer-events-none"></div>
+<div>
+<div class="flex items-start justify-between">
+<div>
+<span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Terminal Node 01</span>
+<h3 class="text-lg font-bold text-slate-900 mt-0.5">Lingampally Station</h3>
+<p class="text-xs text-slate-500 mt-0.5">Bay 1 &amp; Bay 2 Authorized Stand</p>
+</div>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-rose-50 text-rose-700 border border-rose-200">
+<span class="material-symbols-outlined text-[14px] text-rose-600" style="font-variation-settings: &quot;FILL&quot; 1;">local_fire_department</span>
+                HIGH DEMAND
+              </span>
+</div>
+<div class="mt-4 flex items-baseline gap-2">
+<span class="text-3xl font-bold text-slate-900 tracking-tight">30</span>
+<span class="text-sm font-medium text-slate-600">passengers waiting</span>
+</div>
+</div>
+<div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs">
+<div class="flex items-center gap-1.5 text-slate-600 font-medium">
+<span class="material-symbols-outlined text-[16px] text-blue-600">electric_rickshaw</span>
+<span class=""><strong>2 Autos</strong> at Stand</span>
+</div>
+<span class="text-slate-500 font-medium">Est. Queue: <strong>3–5 mins</strong></span>
+</div>
+</div>
+<!-- Node 2: BHEL (Medium Demand) -->
+<div class="cursor-pointer bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-slate-300 transition-all p-5 flex flex-col justify-between relative overflow-hidden" id="card-bhel" onclick="selectStation('bhel')">
+<div>
+<div class="flex items-start justify-between">
+<div>
+<span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Terminal Node 02</span>
+<h3 class="text-lg font-bold text-slate-900 mt-0.5">BHEL Township Gate</h3>
+<p class="text-xs text-slate-500 mt-0.5">Main Checkpost Staging</p>
+</div>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-amber-50 text-amber-800 border border-amber-200">
+<span class="material-symbols-outlined text-[14px] text-amber-600">trending_up</span>
+                MEDIUM
+              </span>
+</div>
+<div class="mt-4 flex items-baseline gap-2">
+<span class="text-3xl font-bold text-slate-900 tracking-tight">18</span>
+<span class="text-sm font-medium text-slate-600">passengers waiting</span>
+</div>
+</div>
+<div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs">
+<div class="flex items-center gap-1.5 text-slate-600 font-medium">
+<span class="material-symbols-outlined text-[16px] text-slate-500">electric_rickshaw</span>
+<span class=""><strong>4 Autos</strong> at Stand</span>
+</div>
+<span class="text-slate-500 font-medium">Est. Queue: <strong>6–8 mins</strong></span>
+</div>
+</div>
+<!-- Node 3: Miyapur (Normal Demand) -->
+<div class="cursor-pointer bg-white rounded-xl border border-slate-200 shadow-sm hover:shadow-md hover:border-slate-300 transition-all p-5 flex flex-col justify-between relative overflow-hidden" id="card-miyapur" onclick="selectStation('miyapur')">
+<div>
+<div class="flex items-start justify-between">
+<div>
+<span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Terminal Node 03</span>
+<h3 class="text-lg font-bold text-slate-900 mt-0.5">Miyapur Metro Cross</h3>
+<p class="text-xs text-slate-500 mt-0.5">Pillar 24 South Concourse</p>
+</div>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+<span class="material-symbols-outlined text-[14px] text-emerald-600">check</span>
+                NORMAL
+              </span>
+</div>
+<div class="mt-4 flex items-baseline gap-2">
+<span class="text-3xl font-bold text-slate-900 tracking-tight">12</span>
+<span class="text-sm font-medium text-slate-600">passengers waiting</span>
+</div>
+</div>
+<div class="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between text-xs">
+<div class="flex items-center gap-1.5 text-slate-600 font-medium">
+<span class="material-symbols-outlined text-[16px] text-slate-500">electric_rickshaw</span>
+<span class=""><strong>5 Autos</strong> at Stand</span>
+</div>
+<span class="text-slate-500 font-medium">Est. Queue: <strong>2–3 mins</strong></span>
+</div>
+</div>
+</div>
+<!-- Main Operational Grid: Detail Panel + Schematic Route Map -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+<!-- Interactive Detail & Staging Panel (5 Cols) -->
+<div class="lg:col-span-5 bg-white rounded-xl border border-slate-200 shadow-sm p-6 space-y-6">
+<div class="flex items-start justify-between pb-4 border-b border-slate-100">
+<div>
+<span class="text-[11px] font-bold text-blue-600 uppercase tracking-wider">Stand Staging &amp; Assignment</span>
+<h2 class="text-xl font-bold text-slate-900 mt-1" id="inspector-name">Lingampally Station (Bay 1 &amp; 2)</h2>
+<p class="text-xs text-slate-500 mt-0.5" id="inspector-subtitle">Authorized ShareAuto Pool Zone #A-4</p>
+</div>
+<div class="w-10 h-10 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center">
+<span class="material-symbols-outlined text-[22px]">ev_station</span>
+</div>
+</div>
+<!-- 4 Metrics Matrix in Panel -->
+<div class="grid grid-cols-2 gap-3">
+<div class="p-3.5 bg-slate-50 rounded-lg border border-slate-100">
+<div class="flex items-center gap-1.5 text-slate-500 text-xs font-medium">
+<span class="material-symbols-outlined text-[16px]">groups</span>
+<span class="">Commuters</span>
+</div>
+<div class="text-2xl font-bold text-slate-900 mt-1" id="metric-passengers">30</div>
+<span class="text-[11px] text-slate-400">waiting right now</span>
+</div>
+<div class="p-3.5 bg-slate-50 rounded-lg border border-slate-100">
+<div class="flex items-center gap-1.5 text-slate-500 text-xs font-medium">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span class="">Avg Waiting</span>
+</div>
+<div class="text-2xl font-bold text-slate-900 mt-1" id="metric-avgwait">~4 mins</div>
+<span class="text-[11px] text-slate-400">in stand staging</span>
+</div>
+<div class="p-3.5 bg-slate-50 rounded-lg border border-slate-100">
+<div class="flex items-center gap-1.5 text-slate-500 text-xs font-medium">
+<span class="material-symbols-outlined text-[16px]">electric_rickshaw</span>
+<span class="">Autos at Stand</span>
+</div>
+<div class="text-2xl font-bold text-rose-600 mt-1" id="metric-autos">2 autos</div>
+<span class="text-[11px] text-slate-400" id="metric-autos-label">undersupplied bay</span>
+</div>
+<div class="p-3.5 bg-slate-50 rounded-lg border border-slate-100">
+<div class="flex items-center gap-1.5 text-slate-500 text-xs font-medium">
+<span class="material-symbols-outlined text-[16px]">hourglass_top</span>
+<span class="">Est. Queue</span>
+</div>
+<div class="text-2xl font-bold text-slate-900 mt-1" id="metric-estqueue">3–5 mins</div>
+<span class="text-[11px] text-slate-400">fast turnover</span>
+</div>
+</div>
+<!-- Directional Split -->
+<div>
+<span class="text-xs font-bold text-slate-700 uppercase tracking-wider">Passenger Travel Direction Split</span>
+<div class="mt-3 space-y-2.5">
+<div class="p-3 bg-slate-50 rounded-lg border border-slate-100 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-white border border-slate-200 flex items-center justify-center text-blue-600">
+<span class="material-symbols-outlined text-[18px]">arrow_right_alt</span>
+</div>
+<div>
+<span class="text-xs font-bold text-slate-800 block">BHEL ⇄ Miyapur Corridor</span>
+<span class="text-[11px] text-slate-500">Direct arterial route pool</span>
+</div>
+</div>
+<div class="text-right">
+<span class="text-base font-bold text-slate-900" id="split-primary-count">18</span>
+<span class="text-xs text-slate-500 ml-1">pax</span>
+</div>
+</div>
+<div class="p-3 bg-slate-50 rounded-lg border border-slate-100 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-full bg-white border border-slate-200 flex items-center justify-center text-slate-500">
+<span class="material-symbols-outlined text-[18px]">alt_route</span>
+</div>
+<div>
+<span class="text-xs font-bold text-slate-800 block">Gachibowli / Financial Dist.</span>
+<span class="text-[11px] text-slate-500">South link transfer lane</span>
+</div>
+</div>
+<div class="text-right">
+<span class="text-base font-bold text-slate-900" id="split-secondary-count">12</span>
+<span class="text-xs text-slate-500 ml-1">pax</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Action Button -->
+<div class="pt-2">
+<button class="w-full bg-slate-900/90 hover:bg-slate-50 text-white font-semibold py-3 px-4 rounded-xl shadow transition-all flex items-center justify-center gap-2 text-sm" style="background-color: rgb(15, 23, 42);"><span class="material-symbols-outlined text-[20px]">navigation</span><span class="">Drive to this Stand • Navigate to Bay 1</span></button>
+<div class="flex items-center justify-center gap-1.5 mt-2.5 text-xs text-slate-500">
+<span class="material-symbols-outlined text-[15px] text-emerald-600">near_me</span>
+<span class="">Your auto is 650m away (ETA ~2 mins)</span>
+</div>
+</div>
+<!-- Bonus Rule Callout -->
+<div class="p-3.5 bg-blue-50/60 rounded-xl border border-blue-100 flex items-start gap-3">
+<span class="material-symbols-outlined text-blue-600 text-[20px] mt-0.5">info</span>
+<div class="text-xs">
+<span class="font-bold text-slate-900">Corridor Volume Bonus:</span>
+<span class="text-slate-600 ml-1">Pool full 4-passenger batches toward Miyapur to qualify for shift volume multiplier bonuses.</span>
+</div>
+</div>
+</div>
+<!-- Live Corridor Map & Route Diagram (7 Cols) -->
+<div class="lg:col-span-7 bg-white rounded-xl border border-slate-200 shadow-sm p-6 flex flex-col justify-between">
+<div class="flex items-center justify-between pb-4 border-b border-slate-100 mb-4">
+<div>
+<span class="text-[11px] font-bold text-blue-600 uppercase tracking-wider">Live Geo-Manifest Map</span>
+<h2 class="text-lg font-bold text-slate-900">Lingampally — Miyapur Corridor Vector</h2>
+</div>
+<div class="flex items-center gap-2 bg-slate-50 px-3 py-1.5 rounded-lg border border-slate-200 text-xs text-slate-600 font-semibold">
+<span class="w-2 h-2 rounded-full bg-blue-600"></span>
+<span class="">3 Authorized Bays Tracked</span>
+</div>
+</div>
+<!-- Vector Schematic Map Container -->
+<div class="relative w-full h-[410px] bg-slate-50 rounded-xl overflow-hidden border border-slate-200 shadow-inner flex items-center justify-center">
+<!-- Background Map Graphics -->
+<svg class="absolute inset-0 w-full h-full" preserveAspectRatio="none" viewBox="0 0 700 420" xmlns="http://www.w3.org/2000/svg">
+<defs>
+<pattern height="35" id="grid" patternUnits="userSpaceOnUse" width="35">
+<path d="M 35 0 L 0 0 0 35" fill="none" opacity="0.7" stroke="#e2e8f0" stroke-width="0.8"></path>
+</pattern>
+</defs>
+<rect fill="#f8fafc" height="100%" width="100%"></rect>
+<rect fill="url(#grid)" height="100%" width="100%"></rect>
+<!-- Minor arterial roads -->
+<path d="M 40 120 C 180 160, 260 90, 420 140 C 520 170, 610 220, 680 240" fill="none" stroke="#e2e8f0" stroke-linecap="round" stroke-width="10"></path>
+<path d="M 120 380 C 190 320, 310 330, 450 300 C 560 270, 630 150, 680 120" fill="none" stroke="#e2e8f0" stroke-linecap="round" stroke-width="8"></path>
+<!-- Main Transit Corridor Vector Line -->
+<path d="M 110 310 C 230 245, 340 210, 580 130" fill="none" stroke="#ffffff" stroke-linecap="round" stroke-width="16"></path>
+<path d="M 110 310 C 230 245, 340 210, 580 130" fill="none" stroke="#3b82f6" stroke-linecap="round" stroke-width="8"></path>
+<path d="M 110 310 C 230 245, 340 210, 580 130" fill="none" stroke="#ffffff" stroke-dasharray="6,6" stroke-linecap="round" stroke-width="2"></path>
+<!-- Transfer lane to Gachibowli -->
+<path d="M 110 310 C 130 370, 190 400, 240 410" fill="none" stroke="#94a3b8" stroke-dasharray="4,4" stroke-width="3"></path>
+</svg>
+<!-- Map Node 1: Lingampally Station (Left anchor) -->
+<div class="absolute left-[16%] top-[74%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center cursor-pointer group z-20" onclick="selectStation('lingampally')">
+<div class="relative flex items-center justify-center">
+<span class="animate-ping absolute inline-flex h-12 w-12 rounded-full bg-rose-400 opacity-40"></span>
+<div class="w-12 h-12 rounded-full bg-white shadow-md border-2 border-rose-600 flex items-center justify-center">
+<span class="text-sm font-bold text-rose-600">30</span>
+</div>
+<span class="absolute -top-1.5 -right-1.5 w-4 h-4 rounded-full bg-rose-600 text-white text-[9px] flex items-center justify-center font-bold">!</span>
+</div>
+<div class="mt-1.5 bg-slate-900/90 backdrop-blur-sm text-white px-2 py-0.5 rounded text-[11px] font-semibold shadow">
+                Lingampally Bay
+              </div>
+</div>
+<!-- Driver Current Position Pin (Near Lingampally) -->
+<div class="absolute left-[28%] top-[60%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center z-30 pointer-events-none">
+<div class="relative flex items-center justify-center">
+<span class="animate-pulse absolute inline-flex h-9 w-9 rounded-full bg-blue-400 opacity-50"></span>
+<div class="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center shadow-lg border-2 border-white">
+<span class="material-symbols-outlined text-[17px]">electric_rickshaw</span>
+</div>
+<span class="absolute -bottom-0.5 -right-0.5 w-2.5 h-2.5 bg-emerald-500 rounded-full border-2 border-white"></span>
+</div>
+<div class="mt-1 bg-blue-600 text-white text-[10px] font-bold px-1.5 py-0.5 rounded shadow">
+                You (ZO-4102)
+              </div>
+</div>
+<!-- Map Node 2: BHEL Township (Center anchor) -->
+<div class="absolute left-[50%] top-[50%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center cursor-pointer group z-20" onclick="selectStation('bhel')">
+<div class="relative flex items-center justify-center">
+<div class="w-11 h-11 rounded-full bg-white shadow-md border-2 border-amber-500 flex items-center justify-center">
+<span class="text-sm font-bold text-amber-600">18</span>
+</div>
+</div>
+<div class="mt-1.5 bg-slate-900/90 backdrop-blur-sm text-white px-2 py-0.5 rounded text-[11px] font-semibold shadow">
+                BHEL Gate
+              </div>
+</div>
+<!-- Map Node 3: Miyapur Metro (Right anchor) -->
+<div class="absolute left-[83%] top-[31%] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center cursor-pointer group z-20" onclick="selectStation('miyapur')">
+<div class="relative flex items-center justify-center">
+<div class="w-10 h-10 rounded-full bg-white shadow-md border-2 border-emerald-500 flex items-center justify-center">
+<span class="text-xs font-bold text-emerald-600">12</span>
+</div>
+</div>
+<div class="mt-1.5 bg-slate-900/90 backdrop-blur-sm text-white px-2 py-0.5 rounded text-[11px] font-semibold shadow">
+                Miyapur Cross
+              </div>
+</div>
+<!-- Map Legend in bottom corner -->
+<div class="absolute bottom-3 left-3 bg-white/95 backdrop-blur-md px-3 py-2 rounded-lg border border-slate-200 shadow-sm flex items-center gap-4 text-xs font-medium text-slate-700">
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-rose-600"></span>
+<span class="">High (&gt;25)</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-amber-500"></span>
+<span class="">Medium (15-25)</span>
+</div>
+<div class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+<span class="">Normal (&lt;15)</span>
+</div>
+</div>
+<!-- Recenter button -->
+<button class="absolute top-3 right-3 w-8 h-8 bg-white hover:bg-slate-50 border border-slate-200 rounded-lg shadow-sm flex items-center justify-center text-slate-700 transition-colors" title="Center Driver Position">
+<span class="material-symbols-outlined text-[18px]">my_location</span>
+</button>
+</div>
+<!-- Bottom Telemetry Badges Strip -->
+<div class="grid grid-cols-3 gap-3 mt-4 pt-4 border-t border-slate-100">
+<div class="flex items-center gap-2.5 bg-slate-50 p-2.5 rounded-lg border border-slate-100">
+<span class="material-symbols-outlined text-blue-600 text-[18px]">sensors</span>
+<div>
+<div class="text-xs font-semibold text-slate-800 leading-tight">Turnstile Sensor</div>
+<div class="text-[10px] text-slate-500">Live count active</div>
+</div>
+</div>
+<div class="flex items-center gap-2.5 bg-slate-50 p-2.5 rounded-lg border border-slate-100">
+<span class="material-symbols-outlined text-emerald-600 text-[18px]">wifi_tethering</span>
+<div>
+<div class="text-xs font-semibold text-slate-800 leading-tight">Mesh Latency</div>
+<div class="text-[10px] text-slate-500">14ms direct link</div>
+</div>
+</div>
+<div class="flex items-center gap-2.5 bg-slate-50 p-2.5 rounded-lg border border-slate-100">
+<span class="material-symbols-outlined text-amber-600 text-[18px]">verified</span>
+<div>
+<div class="text-xs font-semibold text-slate-800 leading-tight">Queue Clearance</div>
+<div class="text-[10px] text-slate-500">Bay #1 prioritized</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Interactive State Switching Script -->
+<script>
+    const stationData = {
+      lingampally: {
+        name: "Lingampally Station (Bay 1 & 2)",
+        subtitle: "Authorized ShareAuto Pool Zone #A-4",
+        passengers: "30",
+        avgWait: "~4 mins",
+        autos: "2 autos",
+        autosColor: "text-rose-600",
+        autosLabel: "undersupplied bay",
+        estQueue: "3–5 mins",
+        splitPrimary: "18",
+        splitSecondary: "12"
+      },
+      bhel: {
+        name: "BHEL Township Gate",
+        subtitle: "Main Checkpost Staging #B-2",
+        passengers: "18",
+        avgWait: "~6 mins",
+        autos: "4 autos",
+        autosColor: "text-amber-600",
+        autosLabel: "adequate supply",
+        estQueue: "6–8 mins",
+        splitPrimary: "11",
+        splitSecondary: "7"
+      },
+      miyapur: {
+        name: "Miyapur Metro Cross",
+        subtitle: "Pillar 24 South Concourse #M-1",
+        passengers: "12",
+        avgWait: "~3 mins",
+        autos: "5 autos",
+        autosColor: "text-emerald-600",
+        autosLabel: "balanced queue",
+        estQueue: "2–3 mins",
+        splitPrimary: "8",
+        splitSecondary: "4"
+      }
+    };
+
+    function selectStation(key) {
+      const data = stationData[key];
+      if (!data) return;
+
+      // Update Inspector UI
+      document.getElementById('inspector-name').innerText = data.name;
+      document.getElementById('inspector-subtitle').innerText = data.subtitle;
+      document.getElementById('metric-passengers').innerText = data.passengers;
+      document.getElementById('metric-avgwait').innerText = data.avgWait;
+      
+      const autosEl = document.getElementById('metric-autos');
+      autosEl.innerText = data.autos;
+      autosEl.className = `text-2xl font-bold mt-1 ${data.autosColor}`;
+      document.getElementById('metric-autos-label').innerText = data.autosLabel;
+      
+      document.getElementById('metric-estqueue').innerText = data.estQueue;
+      document.getElementById('split-primary-count').innerText = data.splitPrimary;
+      document.getElementById('split-secondary-count').innerText = data.splitSecondary;
+
+      // Update Card Visual States
+      ['lingampally', 'bhel', 'miyapur'].forEach(id => {
+        const card = document.getElementById('card-' + id);
+        if (!card) return;
+        if (id === key) {
+          card.classList.add('border-2', 'border-blue-600');
+          card.classList.remove('border-slate-200');
+        } else {
+          card.classList.remove('border-2', 'border-blue-600');
+          card.classList.add('border', 'border-slate-200');
+        }
+      });
+    }
+  </script>
+
+
+
+
+<script src="api.js"></script>
+</body></html>

@@ -1,0 +1,527 @@
+<!DOCTYPE html><html lang="en" style=""><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet">
+<style>
+    @layer base {
+      html, body { margin: 0; padding: 0; }
+      body { overscroll-behavior: none; }
+      main > :first-child { margin-top: 0 !important; }
+      main > :last-child { margin-bottom: 0 !important; }
+    }
+    ::-webkit-scrollbar { display: none; }
+  </style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-slate-50 font-sans text-slate-800 antialiased min-h-screen flex">
+<!-- SIDEBAR: Clean white sidebar, border-r border-slate-200 -->
+<aside class="fixed left-0 top-0 h-screen w-64 bg-white border-r border-slate-200 z-50 flex flex-col justify-between">
+<div class="flex flex-col">
+<!-- Logo Header -->
+<div class="h-16 px-6 flex items-center gap-3 border-b border-slate-100"><a href="#" class="flex items-center"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQepwPVPKBgVGD4kx14VASOlk06NS3skgKo7cME0ezxsgxtG8e7Kq2CqjjUsTeG_MLAZ7g2efb4rL-HmyyllBYKqLhPVHafzBFP3I-ScoNbcZ6aR1inFS7cUi5xXAdwNKVa-hwu8iDT989sZR0k76vwi06bBX3gGhY-KlmYP0wcnitsG_WBQKdmkbZrXQ3QiEfLGc8fhBQzkHwps9jn_WerowBgM0cfJGV2wZhSVe4w-LMw3tJkudoR3G1gnoU_zuKaYU" alt="Zerone Logo" class="max-w-full object-contain h-10"></a></div>
+<!-- Navigation Section -->
+<div class="px-3 pt-5">
+<div class="px-3 pb-2">
+<span class="text-[11px] font-semibold text-slate-400 uppercase tracking-wider">Driver Telemetry</span>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-colors font-medium text-sm" href="#">
+<span class="material-symbols-outlined text-[20px] text-slate-400">dashboard</span>
+<span class="">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-colors font-medium text-sm" href="#">
+<span class="material-symbols-outlined text-[20px] text-slate-400">trending_up</span>
+<span class="">Demand AI</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-colors font-medium text-sm" href="#">
+<span class="material-symbols-outlined text-[20px] text-slate-400">group</span>
+<span class="">Passengers</span>
+</a>
+<!-- Active Earnings Tab: Dark/Royal blue pill with active indicator dot and white text/icon -->
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-slate-900 text-white font-semibold text-sm shadow-sm transition-all" href="#"><span class="material-symbols-outlined text-[20px] text-white" style="font-variation-settings: &quot;FILL&quot; 1;">account_balance_wallet</span><span class="">Earnings</span><span class="ml-auto w-1.5 h-1.5 rounded-full bg-blue-500"></span></a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-slate-600 hover:bg-slate-50 hover:text-slate-900 transition-colors font-medium text-sm" href="#">
+<span class="material-symbols-outlined text-[20px] text-slate-400">settings</span>
+<span class="">Profile &amp; Settings</span>
+</a>
+</nav>
+</div>
+</div>
+<!-- Active Driver Bottom Card -->
+<div class="p-3 border-t border-slate-100">
+<div class="bg-slate-50 border border-slate-200/70 rounded-xl p-3 flex flex-col gap-1.5">
+<div class="flex items-center justify-between">
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Active Pilot</span>
+<span class="inline-flex items-center gap-1 text-[11px] font-semibold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded-full border border-emerald-200/50">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span> Online
+          </span>
+</div>
+<span class="text-sm font-semibold text-slate-900 truncate">Venkat Rao</span>
+<span class="text-xs text-slate-500 font-mono">ZO-DRV-4102 • Lingampally</span>
+</div>
+</div>
+</aside>
+<!-- MAIN CONTENT AREA -->
+<div class="pl-64 flex-1 flex flex-col min-w-0">
+<!-- TOP HEADER -->
+<header class="sticky top-0 z-40 bg-white/95 backdrop-blur-sm border-b border-slate-200 h-16">
+<div class="h-full px-8 flex items-center justify-between">
+<!-- Left: Breadcrumb & Corridor -->
+<div class="flex items-center gap-3">
+<div class="flex items-center gap-2 text-xs text-slate-500 font-medium">
+<span class="hover:text-slate-800 cursor-pointer">Driver Console</span>
+<span class="text-slate-300">/</span>
+<span class="text-slate-800 font-semibold">Financial Ledger</span>
+</div>
+<span class="text-slate-300">|</span>
+<div class="flex items-center gap-1.5 text-xs text-slate-600 bg-slate-100 px-2.5 py-1 rounded-md border border-slate-200/60 font-medium">
+<span class="material-symbols-outlined text-[15px] text-blue-600">alt_route</span>
+<span class="">Lingampally ⇄ BHEL ⇄ Miyapur</span>
+</div>
+</div>
+<!-- Right: Status, GPS & Profile -->
+<div class="flex items-center gap-4">
+<div class="flex items-center gap-2 bg-emerald-50 border border-emerald-200/60 px-3 py-1 rounded-full text-xs font-semibold text-emerald-700">
+<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+<span class="">Online • GPS Synced</span>
+</div>
+<div class="flex items-center gap-1.5 bg-amber-50 border border-amber-200/60 px-2.5 py-1 rounded-full text-xs font-bold text-amber-800">
+<span class="material-symbols-outlined text-[15px] text-amber-500" style="font-variation-settings: &quot;FILL&quot; 1;">star</span>
+<span class="">4.92</span>
+</div>
+<div class="h-6 w-px bg-slate-200"></div>
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-blue-100 text-blue-700 border border-blue-200 font-bold text-xs flex items-center justify-center">
+              VR
+            </div>
+<div class="flex flex-col">
+<span class="text-xs font-bold text-slate-800 leading-tight">Venkat Rao</span>
+<span class="text-[10px] text-slate-500">Auto Partner</span>
+</div>
+</div>
+</div>
+</div>
+</header>
+<!-- CONTENT WRAPPER -->
+<main class="p-8 space-y-6">
+<!-- Page Title & Shift Actions -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<div class="flex items-center gap-2 mb-1">
+<span class="text-[11px] font-bold text-blue-600 uppercase tracking-wider bg-blue-50 px-2 py-0.5 rounded border border-blue-100">
+              Settlement Cycle W-43
+            </span>
+<span class="text-slate-300">•</span>
+<span class="text-xs text-slate-500 font-medium">Daily Direct Disbursement</span>
+</div>
+<h1 class="text-2xl font-bold text-slate-900 tracking-tight">Driver Earnings &amp; Performance Ledger</h1>
+<p class="text-sm text-slate-500 mt-0.5">Track daily fares, weekly income, and automated UPI corridor settlements.</p>
+</div>
+<!-- Segmented Tab Controls -->
+<div class="flex items-center bg-slate-100 p-1 rounded-xl border border-slate-200 text-xs font-semibold self-start sm:self-auto">
+<button class="px-3.5 py-1.5 rounded-lg bg-white text-slate-900 shadow-sm font-bold border border-slate-200/50">
+            Live Shift
+          </button>
+<button class="px-3.5 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 transition-colors">
+            Weekly Summary
+          </button>
+<button class="px-3.5 py-1.5 rounded-lg text-slate-600 hover:text-slate-900 transition-colors">
+            Statements
+          </button>
+</div>
+</div>
+<!-- 4-CARD METRIC SUMMARY ROW (Matching clean crisp admin style) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+<!-- Card 1: Today's Earnings -->
+<div class="bg-white rounded-xl border border-slate-200 p-5 shadow-sm hover:border-slate-300 transition-all flex flex-col justify-between">
+<div class="flex items-center justify-between mb-2">
+<span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Today's Earnings</span>
+<div class="w-8 h-8 rounded-lg bg-blue-50 text-blue-600 flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">payments</span>
+</div>
+</div>
+<div>
+<div class="flex items-baseline gap-2">
+<span class="text-2xl font-extrabold text-slate-900">₹620</span>
+<span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200/60">+8.4%</span>
+</div>
+<p class="text-xs text-slate-500 mt-1 font-medium">Target ₹800 / day (77% reached)</p>
+</div>
+<div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden mt-3">
+<div class="bg-blue-600 h-full rounded-full" style="width: 77%;"></div>
+</div>
+</div>
+<!-- Card 2: Today's Trips -->
+<div class="bg-white rounded-xl border border-slate-200 p-5 shadow-sm hover:border-slate-300 transition-all flex flex-col justify-between">
+<div class="flex items-center justify-between mb-2">
+<span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Today's Trips</span>
+<div class="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">local_taxi</span>
+</div>
+</div>
+<div>
+<div class="flex items-baseline gap-2">
+<span class="text-2xl font-extrabold text-slate-900">14 runs</span>
+<span class="text-xs font-bold text-blue-600 bg-blue-50 px-1.5 py-0.5 rounded border border-blue-200/60">2 left</span>
+</div>
+<p class="text-xs text-slate-500 mt-1 font-medium">Target: 16 trips for surge bonus</p>
+</div>
+<div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden mt-3">
+<div class="bg-emerald-600 h-full rounded-full" style="width: 87.5%;"></div>
+</div>
+</div>
+<!-- Card 3: Average per Trip -->
+<div class="bg-white rounded-xl border border-slate-200 p-5 shadow-sm hover:border-slate-300 transition-all flex flex-col justify-between">
+<div class="flex items-center justify-between mb-2">
+<span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Average per Trip</span>
+<div class="w-8 h-8 rounded-lg bg-indigo-50 text-indigo-600 flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">speed</span>
+</div>
+</div>
+<div>
+<div class="flex items-baseline gap-2">
+<span class="text-2xl font-extrabold text-slate-900">₹44</span>
+<span class="text-xs font-medium text-slate-500">/ passenger run</span>
+</div>
+<p class="text-xs text-slate-500 mt-1 font-medium">Corridor benchmark ₹40–₹46</p>
+</div>
+<div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden mt-3">
+<div class="bg-indigo-600 h-full rounded-full" style="width: 92%;"></div>
+</div>
+</div>
+<!-- Card 4: Weekly Disbursed -->
+<div class="bg-white rounded-xl border border-slate-200 p-5 shadow-sm hover:border-slate-300 transition-all flex flex-col justify-between">
+<div class="flex items-center justify-between mb-2">
+<span class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Weekly Disbursed</span>
+<div class="w-8 h-8 rounded-lg bg-purple-50 text-purple-600 flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">account_balance</span>
+</div>
+</div>
+<div>
+<div class="flex items-baseline gap-2">
+<span class="text-2xl font-extrabold text-slate-900">₹4,280</span>
+<span class="text-xs font-bold text-emerald-600 bg-emerald-50 px-1.5 py-0.5 rounded border border-emerald-200/60">+12%</span>
+</div>
+<p class="text-xs text-slate-500 mt-1 font-medium truncate">Settled to Bank of Baroda UPI</p>
+</div>
+<div class="w-full bg-slate-100 h-1.5 rounded-full overflow-hidden mt-3">
+<div class="bg-purple-600 h-full rounded-full" style="width: 100%;"></div>
+</div>
+</div>
+</div>
+<!-- MIDDLE SECTION: WEEKLY PERFORMANCE CHART & BREAKDOWN -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+<!-- Weekly Performance Chart (8 cols) -->
+<div class="lg:col-span-8 bg-white rounded-xl border border-slate-200 p-6 shadow-sm flex flex-col justify-between">
+<div>
+<!-- Header -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-slate-100">
+<div>
+<span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Performance Ledger</span>
+<h3 class="text-base font-bold text-slate-900">Weekly Earnings Overview</h3>
+</div>
+<div class="flex items-center gap-4 text-xs">
+<div class="flex items-center gap-1.5 text-slate-600">
+<span class="w-2.5 h-2.5 rounded-sm bg-blue-600"></span> Completed
+                </div>
+<div class="flex items-center gap-1.5 text-slate-600">
+<span class="w-2.5 h-2.5 rounded-sm bg-amber-500"></span> Saturday Peak
+                </div>
+<div class="flex items-center gap-1.5 text-slate-600">
+<span class="w-2.5 h-2.5 rounded-sm bg-slate-900"></span> Today
+                </div>
+</div>
+</div>
+<!-- Bar Chart -->
+<div class="pt-6">
+<div class="grid grid-cols-7 gap-3 sm:gap-6 items-end h-52 w-full border-b border-slate-200 pb-2">
+<!-- Mon -->
+<div class="flex flex-col items-center gap-2 h-full justify-end group">
+<span class="text-[11px] font-bold text-slate-700 opacity-0 group-hover:opacity-100 transition-opacity">₹580</span>
+<div class="w-full max-w-[42px] bg-blue-100 rounded-t-md hover:bg-blue-200 transition-colors" style="height: 61%;"></div>
+<span class="text-xs font-semibold text-slate-500">Mon</span>
+</div>
+<!-- Tue -->
+<div class="flex flex-col items-center gap-2 h-full justify-end group">
+<span class="text-[11px] font-bold text-slate-700 opacity-0 group-hover:opacity-100 transition-opacity">₹640</span>
+<div class="w-full max-w-[42px] bg-blue-100 rounded-t-md hover:bg-blue-200 transition-colors" style="height: 68%;"></div>
+<span class="text-xs font-semibold text-slate-500">Tue</span>
+</div>
+<!-- Wed -->
+<div class="flex flex-col items-center gap-2 h-full justify-end group">
+<span class="text-[11px] font-bold text-slate-700 opacity-0 group-hover:opacity-100 transition-opacity">₹710</span>
+<div class="w-full max-w-[42px] bg-blue-100 rounded-t-md hover:bg-blue-200 transition-colors" style="height: 75%;"></div>
+<span class="text-xs font-semibold text-slate-500">Wed</span>
+</div>
+<!-- Thu -->
+<div class="flex flex-col items-center gap-2 h-full justify-end group">
+<span class="text-[11px] font-bold text-slate-700 opacity-0 group-hover:opacity-100 transition-opacity">₹600</span>
+<div class="w-full max-w-[42px] bg-blue-100 rounded-t-md hover:bg-blue-200 transition-colors" style="height: 63%;"></div>
+<span class="text-xs font-semibold text-slate-500">Thu</span>
+</div>
+<!-- Fri -->
+<div class="flex flex-col items-center gap-2 h-full justify-end group">
+<span class="text-[11px] font-bold text-slate-700 opacity-0 group-hover:opacity-100 transition-opacity">₹810</span>
+<div class="w-full max-w-[42px] bg-blue-200 rounded-t-md hover:bg-blue-300 transition-colors" style="height: 86%;"></div>
+<span class="text-xs font-semibold text-slate-500">Fri</span>
+</div>
+<!-- Sat Peak -->
+<div class="flex flex-col items-center gap-2 h-full justify-end group relative">
+<div class="absolute -top-7 px-1.5 py-0.5 rounded bg-amber-500 text-white text-[10px] font-bold whitespace-nowrap shadow-sm">
+                    Peak ₹940
+                  </div>
+<div class="w-full max-w-[42px] bg-amber-500 rounded-t-md shadow-sm" style="height: 100%;"></div>
+<span class="text-xs font-bold text-amber-700">Sat</span>
+</div>
+<!-- Sun Today -->
+<div class="flex flex-col items-center gap-2 h-full justify-end group relative">
+<div class="flex items-center gap-1 mb-0.5">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+<span class="text-[10px] font-bold text-slate-800">₹620</span>
+</div>
+<div class="w-full max-w-[42px] bg-slate-900 rounded-t-md flex items-center justify-center" style="height: 66%;"></div>
+<span class="text-xs font-bold text-slate-900">Sun (Today)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Footer Notice -->
+<div class="mt-4 pt-3 flex flex-wrap items-center justify-between gap-3 text-xs bg-slate-50 p-3 rounded-lg border border-slate-200/70">
+<div class="flex items-center gap-2 text-slate-700 font-medium">
+<span class="material-symbols-outlined text-[18px] text-blue-600">verified</span>
+<span class="">Corridor incentive unlocked: 96% shift compliance rating.</span>
+</div>
+<span class="font-bold text-blue-700 bg-blue-50 px-2 py-0.5 rounded border border-blue-200/50">Bonus active on next 2 rides</span>
+</div>
+</div>
+<!-- Earnings Breakdown & Cashout (4 cols) -->
+<div class="lg:col-span-4 flex flex-col gap-4">
+<!-- Breakdown Card -->
+<div class="bg-white rounded-xl border border-slate-200 p-6 shadow-sm flex flex-col justify-between flex-1">
+<div>
+<div class="flex items-center justify-between pb-3 border-b border-slate-100 mb-4">
+<h3 class="text-base font-bold text-slate-900">Earnings Breakdown</h3>
+<span class="text-[11px] font-bold text-slate-500 uppercase bg-slate-100 px-2 py-0.5 rounded">W-43</span>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between p-3 rounded-lg bg-slate-50 border border-slate-200/50">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-md bg-blue-100 text-blue-600 flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">route</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-semibold text-slate-800">Trip Earnings</span>
+<span class="text-[11px] text-slate-500">Base fares from runs</span>
+</div>
+</div>
+<span class="text-sm font-bold text-slate-900">₹3,850</span>
+</div>
+<div class="flex items-center justify-between p-3 rounded-lg bg-slate-50 border border-slate-200/50">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-md bg-amber-100 text-amber-600 flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: &quot;FILL&quot; 1;">stars</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs font-semibold text-slate-800">Bonuses &amp; Incentives</span>
+<span class="text-[11px] text-slate-500">Peak hour completion</span>
+</div>
+</div>
+<span class="text-sm font-bold text-amber-600">₹430</span>
+</div>
+<div class="p-3.5 rounded-lg bg-blue-50 border border-blue-200/80 flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-[10px] font-bold uppercase tracking-wider text-blue-600">Total Net Income</span>
+<span class="text-xs font-bold text-slate-900">Weekly Total</span>
+</div>
+<span class="text-xl font-extrabold text-blue-700">₹4,280</span>
+</div>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-slate-100 flex items-center gap-2 text-xs text-slate-500 font-medium">
+<span class="material-symbols-outlined text-[16px] text-slate-400">schedule</span>
+<span class="">Auto-payout: <strong class="text-slate-800">Tomorrow 6:00 AM</strong> to UPI</span>
+</div>
+</div>
+<!-- Instant Cashout Card -->
+<div class="bg-white rounded-xl border border-slate-200 p-5 shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider">Instant Liquidity</span>
+<span class="text-xs font-semibold text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200/60">Ready</span>
+</div>
+<div class="flex items-baseline justify-between mb-3">
+<div>
+<span class="text-2xl font-extrabold text-slate-900">₹620</span>
+<span class="text-xs text-slate-500 block font-medium">Cleared for instant transfer</span>
+</div>
+<button class="px-4 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold transition-colors shadow-sm flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]">bolt</span>
+<span class="">Transfer to UPI Now</span>
+</button>
+</div>
+<p class="text-[11px] text-slate-400 border-t border-slate-100 pt-2 font-medium">
+              Transfers instantly to linked Bank of Baroda UPI (•••• 4012). Zero transaction fee.
+            </p>
+</div>
+</div>
+</div>
+<!-- BOTTOM SECTION: RECENT COMPLETED TRIPS TABLE (Matching crisp table format in IMAGE_2) -->
+<div class="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden">
+<div class="p-5 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div>
+<h3 class="text-base font-bold text-slate-900">Recent Completed Trips</h3>
+<p class="text-xs text-slate-500">Live verified dispatch logs for today's shift</p>
+</div>
+<div class="flex items-center gap-3">
+<span class="inline-flex items-center gap-1.5 text-xs text-slate-600 bg-slate-50 border border-slate-200 px-2.5 py-1 rounded-md font-medium">
+<span class="w-2 h-2 rounded-full bg-emerald-500"></span> Direct Corridor Dispatch
+            </span>
+<button class="text-xs font-bold text-blue-600 hover:text-blue-700 hover:underline">
+              Download CSV
+            </button>
+</div>
+</div>
+<!-- Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-slate-50/80 border-b border-slate-200 text-[11px] font-bold text-slate-500 uppercase tracking-wider">
+<th class="py-3 px-5">Trip #</th>
+<th class="py-3 px-5">Corridor Route</th>
+<th class="py-3 px-5">Riders / Mode</th>
+<th class="py-3 px-5">Time</th>
+<th class="py-3 px-5">Payment Status</th>
+<th class="py-3 px-5 text-right">Fare Amount</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 text-xs">
+<!-- Trip 14 -->
+<tr class="hover:bg-slate-50/60 transition-colors">
+<td class="py-3.5 px-5 font-bold text-slate-900">
+<span class="w-7 h-7 rounded-md bg-slate-100 text-slate-700 inline-flex items-center justify-center font-bold text-xs">
+                    #14
+                  </span>
+</td>
+<td class="py-3.5 px-5">
+<div class="flex items-center gap-1.5 font-semibold text-slate-800">
+<span class="">Lingampally</span>
+<span class="material-symbols-outlined text-[14px] text-slate-400">arrow_forward</span>
+<span class="">BHEL</span>
+</div>
+<span class="text-[11px] text-slate-400 font-normal">Corridor Main Route • 4.2 km</span>
+</td>
+<td class="py-3.5 px-5 text-slate-600 font-medium">
+                  3 Shared Riders (Full Shared)
+                </td>
+<td class="py-3.5 px-5 text-slate-500">
+                  15 mins ago
+                </td>
+<td class="py-3.5 px-5">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200/60">
+<span class="material-symbols-outlined text-[13px]">check_circle</span> Paid via UPI QR
+                  </span>
+</td>
+<td class="py-3.5 px-5 text-right font-bold text-slate-900 text-sm">
+                  ₹45
+                </td>
+</tr>
+<!-- Trip 13 -->
+<tr class="hover:bg-slate-50/60 transition-colors">
+<td class="py-3.5 px-5 font-bold text-slate-900">
+<span class="w-7 h-7 rounded-md bg-slate-100 text-slate-700 inline-flex items-center justify-center font-bold text-xs">
+                    #13
+                  </span>
+</td>
+<td class="py-3.5 px-5">
+<div class="flex items-center gap-1.5 font-semibold text-slate-800">
+<span class="">BHEL</span>
+<span class="material-symbols-outlined text-[14px] text-slate-400">arrow_forward</span>
+<span class="">Miyapur</span>
+</div>
+<span class="text-[11px] text-slate-400 font-normal">Corridor Main Route • 5.1 km</span>
+</td>
+<td class="py-3.5 px-5 text-slate-600 font-medium">
+                  4 Shared Riders (Overloaded Peak)
+                </td>
+<td class="py-3.5 px-5 text-slate-500">
+                  42 mins ago
+                </td>
+<td class="py-3.5 px-5">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200/60">
+<span class="material-symbols-outlined text-[13px]">check_circle</span> Paid via UPI QR
+                  </span>
+</td>
+<td class="py-3.5 px-5 text-right font-bold text-slate-900 text-sm">
+                  ₹50
+                </td>
+</tr>
+<!-- Trip 12 -->
+<tr class="hover:bg-slate-50/60 transition-colors">
+<td class="py-3.5 px-5 font-bold text-slate-900">
+<span class="w-7 h-7 rounded-md bg-slate-100 text-slate-700 inline-flex items-center justify-center font-bold text-xs">
+                    #12
+                  </span>
+</td>
+<td class="py-3.5 px-5">
+<div class="flex items-center gap-1.5 font-semibold text-slate-800">
+<span class="">Miyapur</span>
+<span class="material-symbols-outlined text-[14px] text-slate-400">arrow_forward</span>
+<span class="">Lingampally</span>
+</div>
+<span class="text-[11px] text-slate-400 font-normal">Corridor Return Loop • 4.6 km</span>
+</td>
+<td class="py-3.5 px-5 text-slate-600 font-medium">
+                  3 Shared Riders (Pass Holders)
+                </td>
+<td class="py-3.5 px-5 text-slate-500">
+                  1 hr 10 mins ago
+                </td>
+<td class="py-3.5 px-5">
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-semibold bg-blue-50 text-blue-700 border border-blue-200/60">
+<span class="material-symbols-outlined text-[13px]">verified</span> ZeroOne Pass
+                  </span>
+</td>
+<td class="py-3.5 px-5 text-right font-bold text-slate-900 text-sm">
+                  ₹40
+                </td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer -->
+<div class="p-3 bg-slate-50 border-t border-slate-200/70 flex items-center justify-between text-xs text-slate-500">
+<span class="">Showing 3 of 14 completed trips today</span>
+<button class="font-bold text-blue-600 hover:text-blue-700 flex items-center gap-1">
+<span class="">View All 14 Trips</span>
+<span class="material-symbols-outlined text-[16px]">chevron_right</span>
+</button>
+</div>
+</div>
+</main>
+</div>
+
+
+
+
+<script src="api.js"></script>
+</body></html>

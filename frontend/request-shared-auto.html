@@ -1,0 +1,430 @@
+<!DOCTYPE html><html lang="en" style="width: 1280px; height: 1024px; position: relative;"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600;700;800;900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<style>
+    @layer base {
+      html, body { margin:0; padding:0; font-family: 'Plus Jakarta Sans', 'Inter', sans-serif; }
+      body { overscroll-behavior: none; }
+    }
+    ::-webkit-scrollbar { display: none; }
+  </style>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {fontFamily: {sans: ["\"Plus Jakarta Sans\"", "Inter", "sans-serif"], headline: ["Inter"], display: ["Inter"], body: ["Inter"], label: ["Inter"]}, colors: {brand: {navy: "#0a0f1d", blue: "#2563eb", indigo: "#4f46e5", amber: "#f59e0b"}, "on-tertiary-fixed": "#0f0069", "on-tertiary-fixed-variant": "#3323cc", "on-surface": "#0b1c30", "surface-tint": "#4e5d8a", "on-surface-variant": "#45464f", "outline-variant": "#c5c6d0", "tertiary-fixed": "#e2dfff", "on-tertiary-container": "#7773ff", "on-tertiary": "#ffffff", "primary-container": "#081a44", "primary-fixed": "#dbe1ff", "tertiary-container": "#0f006d", primary: "#00020d", background: "#f8f9ff", error: "#ba1a1a", "on-primary-container": "#7583b3", "surface-container-high": "#dce9ff", "on-primary-fixed": "#071943", "on-primary": "#ffffff", "on-background": "#0b1c30", "secondary-container": "#fea619", outline: "#757680", "inverse-on-surface": "#eaf1ff", "on-error-container": "#93000a", "secondary-fixed-dim": "#ffb95f", "surface-variant": "#d3e4fe", tertiary: "#010017", "on-secondary-fixed": "#2a1700", "on-error": "#ffffff", "surface-bright": "#f8f9ff", "error-container": "#ffdad6", "inverse-surface": "#213145", "surface-container": "#e5eeff", secondary: "#855300", "on-secondary": "#ffffff", "on-secondary-container": "#684000", "on-secondary-fixed-variant": "#653e00", "surface-container-lowest": "#ffffff", "surface-dim": "#cbdbf5", "tertiary-fixed-dim": "#c3c0ff", "inverse-primary": "#b6c5f9", "surface-container-low": "#eff4ff", "on-primary-fixed-variant": "#364571", "primary-fixed-dim": "#b6c5f9", surface: "#f8f9ff", "surface-container-highest": "#d3e4fe", "secondary-fixed": "#ffddb8"}, fontSize: {}, borderRadius: {DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px"}}}};</script>
+</head>
+<body class="bg-[#f8fafc] font-sans text-slate-800 antialiased min-h-screen">
+<!-- Left Navigation Sidebar -->
+<aside class="fixed left-0 top-0 h-full w-72 bg-white z-50 flex flex-col pt-6 pb-6 border-r border-slate-200/70 shadow-[1px_0_16px_rgba(15,23,42,0.03)]">
+<!-- Brand Logo -->
+<div class="px-6 pb-6 flex items-center gap-3 border-b border-slate-100"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuAp-K-WTu4lsUcJBKwNPIFpmXdQG7lwSwscm2O4AwLF50q2cE0V6oOwQrZpx_rNVJ1-xt0Z8ORKGsv6LNRpRN4CoB_YYZN5EPbhWBsVyfnc9jIXMGzWEJ3ni9A5Pdo9ocyGxb_8X1Lkx354Z8w1Nf9GVJAspBCEf7oA1FNc0EeRKQtrQt_OVRR9QIQ5uGh-3u4OEh-5b-MFPY3juF2achz-SifI3EBNViYe7I5MTldRItSDM640TZOYOEHnOzC2g0VVO9Ly-0D4rugCUDc" alt="Zerone Logo" class="h-16 max-w-full object-contain"></div>
+<!-- Navigation Items -->
+<div class="flex-1 px-4 py-6 space-y-6">
+<div class="space-y-1.5">
+<span class="px-3 text-[11px] font-bold text-slate-400 uppercase tracking-wider">Passenger Hub</span>
+<nav class="space-y-1 pt-1.5">
+<!-- Active Item -->
+<a class="flex items-center gap-3 px-3.5 py-3 rounded-2xl bg-slate-900 text-white font-semibold shadow-md shadow-slate-900/10 transition-all group" href="#">
+<span class="material-symbols-outlined text-[20px] text-amber-400 group-hover:scale-110 transition-transform">sensors</span>
+<span class="text-[13.5px] tracking-tight">Request Shared Auto</span>
+</a>
+<!-- Other Items -->
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-2xl text-slate-600 hover:bg-slate-100/80 hover:text-slate-900 font-medium transition-all" href="#">
+<span class="material-symbols-outlined text-[20px] text-slate-400">alt_route</span>
+<span class="text-[13.5px]">Search Routes &amp; Stops</span>
+</a>
+<a class="flex items-center gap-3 px-3.5 py-2.5 rounded-2xl text-slate-600 hover:bg-slate-100/80 hover:text-slate-900 font-medium transition-all" href="#">
+<span class="material-symbols-outlined text-[20px] text-slate-400">smart_toy</span>
+<span class="text-[13.5px]">ZeroOne AI Chatbot</span>
+</a>
+</nav>
+</div>
+</div>
+<!-- Corridor Badge Footnote -->
+<div class="px-4">
+<div class="p-3.5 bg-slate-50/80 rounded-2xl border border-slate-200/70 space-y-1.5">
+<div class="flex items-center justify-between">
+<span class="text-[11px] font-bold text-slate-600 flex items-center gap-1.5">
+<span class="inline-block w-2 h-2 rounded-full bg-emerald-500 ring-4 ring-emerald-100"></span>Corridor H1
+        </span>
+<span class="text-[10px] font-bold text-indigo-700 bg-indigo-50/80 border border-indigo-100 px-2 py-0.5 rounded-full">Shared Transit</span>
+</div>
+<p class="text-[12px] font-bold text-slate-800 tracking-tight">HITEC City ⇄ DLF Gachibowli</p>
+</div>
+</div>
+</aside>
+<!-- Main Container -->
+<div class="pl-72 flex flex-col min-h-screen">
+<!-- Top Passenger Header Bar -->
+<header class="h-16 bg-white/80 backdrop-blur-md border-b border-slate-200/70 sticky top-0 z-40 flex items-center justify-between px-8">
+<div class="flex items-center gap-3">
+<div class="inline-flex items-center gap-2 px-3.5 py-1.5 bg-slate-100/80 border border-slate-200/60 rounded-full">
+<span class="material-symbols-outlined text-[17px] text-indigo-600">hub</span>
+<span class="text-[12.5px] text-slate-700 font-semibold tracking-tight">Hyderabad &amp; Telangana Shared Auto Network • Fixed-Route Corridors</span>
+</div>
+</div>
+<div class="flex items-center gap-3.5">
+<!-- Notification Bell -->
+<button class="relative w-9 h-9 rounded-xl text-slate-500 hover:bg-slate-100 hover:text-slate-800 transition-colors flex items-center justify-center border border-slate-200/60" title="Notifications">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 bg-amber-500 rounded-full ring-2 ring-white"></span>
+</button>
+<!-- Passenger Profile -->
+<div class="flex items-center gap-3 pl-2 border-l border-slate-200/70">
+<div class="w-9 h-9 rounded-full bg-slate-900 text-white flex items-center justify-center font-bold text-[13px] shadow-sm ring-2 ring-slate-100">
+          AS
+        </div>
+<div class="flex flex-col text-left">
+<span class="text-[13px] font-bold text-slate-900 leading-tight">Aarav Sharma</span>
+<span class="text-[11px] text-slate-400 font-medium">Daily Commuter</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Page Content -->
+<main class="p-8 max-w-6xl w-full mx-auto space-y-6">
+<!-- Hero Title & Subtext -->
+<div class="space-y-1">
+<h1 class="text-[26px] font-extrabold text-slate-900 tracking-tight">Request Shared Auto</h1>
+<p class="text-[13.5px] text-slate-500 font-medium">Signal your pickup presence at authorized corridor stands. Approaching drivers will see where you're waiting.</p>
+</div>
+<!-- Floating Live Availability Bar -->
+<div class="backdrop-blur-sm bg-white/90 border border-slate-200/80 shadow-sm p-3.5 px-5 rounded-2xl flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div class="flex flex-wrap items-center gap-4 sm:gap-6">
+<div class="flex items-center gap-2.5">
+<div class="w-7 h-7 rounded-xl bg-amber-50 border border-amber-200/80 flex items-center justify-center text-[15px]">🛺</div>
+<span class="text-[13px] text-slate-600 font-medium">
+<strong class="font-bold text-slate-900">4 autos</strong> currently on standby at HITEC City Metro
+          </span>
+</div>
+<span class="hidden sm:inline-block w-1.5 h-1.5 rounded-full bg-slate-300"></span>
+<div class="flex items-center gap-2.5">
+<div class="w-7 h-7 rounded-xl bg-indigo-50 border border-indigo-200/70 flex items-center justify-center text-[15px]">🛺</div>
+<span class="text-[13px] text-slate-600 font-medium">
+<strong class="font-bold text-indigo-700">3 autos</strong> approaching your stop
+          </span>
+</div>
+</div>
+<div class="inline-flex items-center gap-2 text-[12px] font-bold text-emerald-800 bg-emerald-50 border border-emerald-200/70 px-3 py-1.5 rounded-full self-start sm:self-auto shadow-sm">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+</span>
+<span class="">Corridor Running Smoothly</span>
+</div>
+</div>
+<!-- Two-Column Consumer Interface -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+<!-- Left Column: Booking & Request Action Card (7 cols) -->
+<div class="lg:col-span-7 bg-white rounded-3xl p-6 sm:p-7 border border-slate-200/80 shadow-[0_8px_30px_rgb(0,0,0,0.04)] space-y-6">
+<!-- Station Selection Header -->
+<div class="flex items-center justify-between pb-1">
+<span class="text-[11.5px] font-extrabold text-indigo-600 uppercase tracking-wider flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[17px]">location_on</span> Where are you going?
+          </span>
+<span class="text-[11px] font-bold text-slate-400 bg-slate-100/80 px-2.5 py-1 rounded-full">Fixed Route H1</span>
+</div>
+<!-- Vertical Connecting Origin & Destination Route Box -->
+<div class="relative bg-slate-50/70 rounded-2xl p-3 border border-slate-200/70 space-y-2">
+<!-- Origin Card -->
+<div class="p-3.5 rounded-xl bg-white border border-emerald-200 shadow-sm transition-all">
+<div class="flex items-center justify-between gap-3">
+<div class="flex items-center gap-3 min-w-0">
+<div class="relative shrink-0">
+<span class="absolute -inset-1 rounded-full bg-emerald-400/30 animate-ping"></span>
+<div class="relative w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center ring-2 ring-emerald-100 shadow-sm">
+<span class="material-symbols-outlined text-[18px]">trip_origin</span>
+</div>
+</div>
+<div class="min-w-0">
+<div class="flex items-center gap-2 flex-wrap">
+<span class="text-[10px] font-black uppercase tracking-wider text-emerald-800 bg-emerald-100/80 px-2 py-0.5 rounded-md">Pickup • Bay 4</span>
+<span class="inline-flex items-center gap-1 text-[10.5px] font-bold text-indigo-600 bg-indigo-50 px-2 py-0.5 rounded-md">
+<span class="material-symbols-outlined text-[11px]">bolt</span> 2-3 min intervals
+                    </span>
+</div>
+<div class="text-[14.5px] font-extrabold text-slate-900 tracking-tight mt-0.5">
+                    HITEC City Metro Stand 2
+                  </div>
+</div>
+</div>
+<div class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-emerald-50 text-emerald-700 text-[11px] font-bold shrink-0 border border-emerald-200/80">
+<span class="material-symbols-outlined text-[14px] text-emerald-600">verified</span>
+<span class="">Verified Stand</span>
+</div>
+</div>
+</div>
+<!-- Vertical Route Linker & Swap Button -->
+<div class="relative flex items-center justify-center py-0.5">
+<div class="absolute left-7 top-0 bottom-0 w-0.5 border-l-2 border-dashed border-slate-300"></div>
+<button class="relative z-10 flex items-center gap-1.5 px-3 py-1 rounded-full bg-white hover:bg-slate-100 border border-slate-200/90 shadow-sm text-slate-600 hover:text-indigo-600 text-[11px] font-bold transition-all group cursor-pointer" title="Switch corridor direction" type="button">
+<span class="material-symbols-outlined text-[14px] group-hover:rotate-180 transition-transform">swap_vert</span>
+<span class="">Switch Direction</span>
+</button>
+</div>
+<!-- Destination Card -->
+<div class="p-3.5 rounded-xl bg-white border border-slate-200/90 shadow-sm hover:border-slate-300 transition-all flex items-center justify-between gap-3">
+<div class="flex items-center gap-3 min-w-0">
+<div class="w-8 h-8 rounded-full bg-slate-900 text-white flex items-center justify-center shrink-0 ring-2 ring-slate-100 shadow-sm">
+<span class="material-symbols-outlined text-[18px] text-amber-400">pin_drop</span>
+</div>
+<div class="min-w-0">
+<span class="text-[10px] font-black uppercase tracking-wider text-slate-500">Destination Terminus</span>
+<div class="text-[14.5px] font-extrabold text-slate-900 tracking-tight truncate">
+                  Gachibowli DLF Phase 2
+                </div>
+<div class="text-[11.5px] text-slate-500 font-medium">Direct express drop • Fixed stop</div>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-400 text-[20px]">expand_more</span>
+</div>
+</div>
+<!-- Live Auto Radar Map Widget -->
+<div class="rounded-2xl border border-slate-200/90 overflow-hidden bg-slate-50 relative shadow-sm">
+<!-- Radar Header -->
+<div class="px-4 py-2.5 bg-white border-b border-slate-200/80 flex items-center justify-between gap-2">
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-50 border border-emerald-200/80 text-[11px] font-black text-emerald-800 tracking-wide">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span> LIVE AUTO RADAR
+              </span>
+<span class="text-[12px] font-medium text-slate-600 hidden sm:inline-block">
+<strong class="text-slate-900 font-bold">4 standby</strong> at Bay 4 • <strong class="text-indigo-600 font-bold">3 approaching</strong>
+</span>
+</div>
+<div class="flex items-center gap-1">
+<button class="w-7 h-7 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center text-[15px] transition-colors" title="Locate My Stop" type="button">
+<span class="material-symbols-outlined text-[16px]">my_location</span>
+</button>
+<button class="w-7 h-7 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center text-[15px] transition-colors" title="Zoom in" type="button">
+<span class="material-symbols-outlined text-[16px]">add</span>
+</button>
+<button class="w-7 h-7 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 flex items-center justify-center text-[15px] transition-colors" title="Zoom out" type="button">
+<span class="material-symbols-outlined text-[16px]">remove</span>
+</button>
+</div>
+</div>
+<!-- Radar Map Canvas -->
+<div class="relative w-full h-72 bg-[#edf2f7] overflow-hidden select-none">
+<svg class="absolute inset-0 w-full h-full" preserveAspectRatio="xMidYMid slice" viewBox="0 0 620 288" xmlns="http://www.w3.org/2000/svg">
+<rect fill="#f1f5f9" height="100%" width="100%"></rect>
+<!-- Parks / Green zones -->
+<path d="M-20,40 C60,30 110,90 130,120 C100,160 50,180 -10,160 Z" fill="#dcfce7" opacity="0.65"></path>
+<path d="M470,-20 C530,10 590,70 630,90 L630,-20 Z" fill="#dcfce7" opacity="0.65"></path>
+<path d="M380,210 C430,200 480,230 520,290 L340,290 Z" fill="#e2e8f0" opacity="0.55"></path>
+<!-- Primary & Secondary Road Grids -->
+<path d="M-20,180 L640,140" stroke="#ffffff" stroke-linecap="round" stroke-width="16"></path>
+<path d="M180,-10 L180,300" stroke="#ffffff" stroke-width="14"></path>
+<path d="M440,-10 L410,300" stroke="#ffffff" stroke-width="14"></path>
+<path d="M-10,80 L280,60 L630,100" stroke="#ffffff" stroke-width="10"></path>
+<!-- Metro Corridor Viaduct -->
+<path d="M20,220 Q 200,190 350,150 T 610,60" fill="none" stroke="#cbd5e1" stroke-linecap="round" stroke-width="10"></path>
+<!-- Glowing Active Corridor Path Line -->
+<path d="M140,195 Q 260,168 360,148 T 530,85" fill="none" opacity="0.6" stroke="#a5b4fc" stroke-linecap="round" stroke-width="8"></path>
+<path d="M140,195 Q 260,168 360,148 T 530,85" fill="none" stroke="#4f46e5" stroke-dasharray="6 4" stroke-linecap="round" stroke-width="4"></path>
+</svg>
+<!-- Origin Marker (HITEC City Metro Stand) -->
+<div class="absolute left-[135px] top-[178px] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center pointer-events-none z-20">
+<span class="absolute -inset-3 rounded-full bg-emerald-500/25 animate-ping"></span>
+<div class="relative w-8 h-8 rounded-full bg-emerald-600 text-white flex items-center justify-center ring-4 ring-white shadow-lg">
+<span class="material-symbols-outlined text-[18px]">person_pin_circle</span>
+</div>
+<div class="mt-1 bg-white/95 backdrop-blur-sm border border-emerald-300 px-2.5 py-0.5 rounded-full shadow-sm text-center whitespace-nowrap">
+<span class="text-[10px] font-black text-emerald-950 block leading-tight">HITEC Metro Stand 2</span>
+<span class="text-[9px] font-bold text-emerald-700">Your Stop • Bay 4</span>
+</div>
+</div>
+<!-- Standby Autos (4 amber badges) -->
+<div class="absolute left-[182px] top-[152px] -translate-x-1/2 -translate-y-1/2 z-20 group cursor-pointer">
+<div class="px-1.5 py-0.5 bg-amber-400 hover:bg-amber-500 rounded-md shadow-sm border border-amber-600 flex items-center gap-1 text-[11px] font-black text-slate-950 transition-transform group-hover:scale-110">
+<span class="">🛺</span>
+<span class="text-[9px] font-mono leading-none">#1</span>
+</div>
+</div>
+<div class="absolute left-[195px] top-[182px] -translate-x-1/2 -translate-y-1/2 z-20 group cursor-pointer">
+<div class="px-1.5 py-0.5 bg-amber-400 hover:bg-amber-500 rounded-md shadow-sm border border-amber-600 flex items-center gap-1 text-[11px] font-black text-slate-950 transition-transform group-hover:scale-110">
+<span class="">🛺</span>
+<span class="text-[9px] font-mono leading-none">#2</span>
+</div>
+</div>
+<div class="absolute left-[175px] top-[214px] -translate-x-1/2 -translate-y-1/2 z-20 group cursor-pointer">
+<div class="px-1.5 py-0.5 bg-amber-400 hover:bg-amber-500 rounded-md shadow-sm border border-amber-600 flex items-center gap-1 text-[11px] font-black text-slate-950 transition-transform group-hover:scale-110">
+<span class="">🛺</span>
+<span class="text-[9px] font-mono leading-none">#3</span>
+</div>
+</div>
+<div class="absolute left-[138px] top-[236px] -translate-x-1/2 -translate-y-1/2 z-20 group cursor-pointer">
+<div class="px-1.5 py-0.5 bg-amber-400 hover:bg-amber-500 rounded-md shadow-sm border border-amber-600 flex items-center gap-1 text-[11px] font-black text-slate-950 transition-transform group-hover:scale-110">
+<span class="">🛺</span>
+<span class="text-[9px] font-mono leading-none">#4</span>
+</div>
+</div>
+<!-- Approaching Autos (3 blue auto markers moving toward stand) -->
+<!-- Auto 1: ~350m Approaching -->
+<div class="absolute left-[265px] top-[152px] -translate-x-1/2 -translate-y-1/2 z-20 group cursor-pointer flex flex-col items-center">
+<div class="mb-1 px-2 py-0.5 bg-indigo-900/90 backdrop-blur-sm text-white rounded-full text-[9px] font-bold shadow-sm tracking-tight whitespace-nowrap border border-indigo-700/50">
+                ~350m • Approaching
+              </div>
+<div class="w-6 h-6 rounded-full bg-indigo-600 border-2 border-white shadow-md flex items-center justify-center text-white text-[11px] group-hover:scale-110 transition-transform">
+                🛺
+              </div>
+</div>
+<!-- Auto 2: Cyber Gateway • ~750m -->
+<div class="absolute left-[365px] top-[128px] -translate-x-1/2 -translate-y-1/2 z-20 group cursor-pointer flex flex-col items-center">
+<div class="mb-1 px-2 py-0.5 bg-indigo-900/90 backdrop-blur-sm text-white rounded-full text-[9px] font-bold shadow-sm tracking-tight whitespace-nowrap border border-indigo-700/50">
+                Cyber Gateway • ~750m
+              </div>
+<div class="w-6 h-6 rounded-full bg-indigo-600 border-2 border-white shadow-md flex items-center justify-center text-white text-[11px] group-hover:scale-110 transition-transform">
+                🛺
+              </div>
+</div>
+<!-- Auto 3: ~1.3 km away -->
+<div class="absolute left-[445px] top-[102px] -translate-x-1/2 -translate-y-1/2 z-20 group cursor-pointer flex flex-col items-center">
+<div class="mb-1 px-2 py-0.5 bg-indigo-900/90 backdrop-blur-sm text-white rounded-full text-[9px] font-bold shadow-sm tracking-tight whitespace-nowrap border border-indigo-700/50">
+                ~1.3 km away
+              </div>
+<div class="w-6 h-6 rounded-full bg-indigo-600 border-2 border-white shadow-md flex items-center justify-center text-white text-[11px] group-hover:scale-110 transition-transform">
+                🛺
+              </div>
+</div>
+<!-- Destination Terminus Marker -->
+<div class="absolute left-[535px] top-[75px] -translate-x-1/2 -translate-y-1/2 flex flex-col items-center pointer-events-none z-20">
+<div class="w-8 h-8 rounded-full bg-slate-900 text-amber-400 flex items-center justify-center ring-4 ring-white shadow-lg">
+<span class="material-symbols-outlined text-[17px]">sports_score</span>
+</div>
+<div class="mt-1 bg-white/95 backdrop-blur-sm border border-slate-200/90 px-2.5 py-0.5 rounded-full shadow-sm text-center whitespace-nowrap">
+<span class="text-[10px] font-bold text-slate-800 leading-tight block">DLF Phase 2 Terminus</span>
+<span class="text-[9px] text-slate-500 font-semibold">Authorized Drop</span>
+</div>
+</div>
+<!-- Bottom Map Bar -->
+<div class="absolute bottom-2.5 left-3 right-3 flex items-center justify-between pointer-events-none z-30">
+<div class="flex items-center gap-2 bg-white/95 backdrop-blur-md px-3 py-1.5 rounded-xl border border-slate-200/90 shadow-sm text-[11px] font-semibold text-slate-700 pointer-events-auto">
+<span class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-amber-400 border border-amber-600 inline-block"></span> 4 at Standby
+                </span>
+<span class="text-slate-300">•</span>
+<span class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-indigo-600 inline-block"></span> 3 Approaching
+                </span>
+</div>
+<div class="bg-white/95 backdrop-blur-md px-3 py-1.5 rounded-xl border border-slate-200/90 shadow-sm text-[10.5px] font-bold text-emerald-700 flex items-center gap-1.5 pointer-events-auto">
+<span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span> Live GPS Synced
+              </div>
+</div>
+</div>
+</div>
+<!-- Commuters Traveling Pill Selector -->
+<div class="space-y-2 pt-1">
+<span class="text-[12px] font-bold text-slate-700 block">Commuters traveling:</span>
+<div class="grid grid-cols-4 gap-2">
+<button class="py-2.5 px-3 rounded-xl bg-slate-900 text-white font-bold text-[13px] shadow-sm flex items-center justify-center gap-1.5 ring-2 ring-slate-900 transition-all">
+<span class="material-symbols-outlined text-[16px] text-amber-400">person</span> 1 Person
+            </button>
+<button class="py-2.5 px-3 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-700 font-semibold text-[13px] border border-slate-200/80 transition-all">
+              2 People
+            </button>
+<button class="py-2.5 px-3 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-700 font-semibold text-[13px] border border-slate-200/80 transition-all">
+              3 People
+            </button>
+<button class="py-2.5 px-3 rounded-xl bg-slate-50 hover:bg-slate-100 text-slate-700 font-semibold text-[13px] border border-slate-200/80 transition-all">
+              4+ Group
+            </button>
+</div>
+</div>
+<!-- Hero Primary Action Button -->
+<div class="pt-2 space-y-2.5">
+<button class="w-full py-4 px-6 rounded-2xl bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 active:scale-[0.99] text-slate-950 font-black text-[18px] tracking-tight shadow-lg shadow-amber-500/25 hover:shadow-xl hover:shadow-amber-500/30 transition-all flex items-center justify-center gap-2.5 group cursor-pointer">
+<span class="text-2xl group-hover:scale-110 transition-transform">🙋</span>
+<span class="">I'M WAITING</span>
+</button>
+<p class="text-center text-[12px] text-slate-500 font-medium">
+            Let nearby ShareAuto drivers know you're waiting at this stop.
+          </p>
+</div>
+<!-- Transparent Fare Chip Note -->
+<div class="p-3.5 bg-slate-50 rounded-2xl border border-slate-200/80 flex items-center gap-3">
+<div class="w-7 h-7 rounded-xl bg-emerald-100 text-emerald-800 flex items-center justify-center shrink-0 font-bold text-[14px]">
+            ₹
+          </div>
+<p class="text-[12px] text-slate-600 leading-snug">
+<strong class="font-bold text-slate-800">Fixed corridor fare: ₹25</strong> • Pay on hop-on via UPI QR or cash • No surge pricing
+          </p>
+</div>
+</div>
+<!-- Right Column: Active Request Confirmation State (5 cols) -->
+<div class="lg:col-span-5 space-y-4">
+<!-- Live Signal & Commuter Pass Card -->
+<div class="bg-white rounded-3xl p-6 sm:p-7 border border-slate-200/80 shadow-[0_8px_30px_rgb(0,0,0,0.04)] space-y-6">
+<!-- Card Header & Active Status Tag -->
+<div class="flex items-center justify-between">
+<span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200/80 text-[12px] font-bold text-emerald-800 shadow-sm">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+</span>
+<span class="">You're visible to nearby ShareAutos</span>
+</span>
+<span class="text-[11px] font-extrabold text-slate-400 uppercase tracking-wider">Live Signal</span>
+</div>
+<!-- Active Corridor Signal Info Card -->
+<div class="space-y-1.5 p-4 rounded-2xl bg-indigo-50/60 border border-indigo-100/90">
+<span class="text-[10px] font-bold text-indigo-700 tracking-wider uppercase">Active Corridor Signal</span>
+<div class="text-[15px] font-black text-slate-900 flex items-center gap-2 tracking-tight">
+<span class="">HITEC City Metro Stand 2</span>
+<span class="material-symbols-outlined text-indigo-500 text-[18px]">arrow_forward</span>
+<span class="">DLF Phase 2</span>
+</div>
+<p class="text-[12px] text-slate-600 mt-1 leading-relaxed">
+              Nearby drivers along Route H1 can now notice you're waiting at Bay 4.
+            </p>
+</div>
+<!-- Commuter Request ID Card -->
+<div class="p-4 rounded-2xl bg-slate-50/80 border border-slate-200/80 flex items-center justify-between">
+<div>
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Commuter Request ID</span>
+<div class="flex items-center gap-2 mt-0.5">
+<span class="text-2xl font-black text-slate-900 tracking-tight font-mono">#ZO-4928</span>
+<button class="p-1 rounded-lg hover:bg-slate-200/70 text-slate-400 hover:text-slate-700 transition-colors" title="Copy Commuter ID" type="button">
+<span class="material-symbols-outlined text-[17px]">content_copy</span>
+</button>
+</div>
+</div>
+<div class="w-10 h-10 rounded-2xl bg-white border border-slate-200 flex items-center justify-center text-indigo-600 shadow-sm" title="Digital Commuter Pass Badge">
+<span class="material-symbols-outlined text-[20px]">badge</span>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="space-y-2 pt-1">
+<button class="w-full py-3.5 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-white font-bold text-[13.5px] transition-colors shadow-md shadow-slate-900/10 flex items-center justify-center gap-2 cursor-pointer">
+<span class="material-symbols-outlined text-[17px] text-amber-400">check_circle</span>
+<span class="">Keep Signal Active</span>
+</button>
+<button class="w-full py-2.5 px-4 rounded-xl hover:bg-slate-100 text-slate-500 hover:text-slate-800 font-semibold text-[13px] transition-colors cursor-pointer">
+              Cancel Signal
+            </button>
+</div>
+</div>
+<!-- Gentle Hop-On Reminder Tip -->
+<div class="p-4 rounded-2xl bg-white border border-slate-200/80 shadow-sm flex items-start gap-3">
+<span class="text-xl shrink-0 mt-0.5">💡</span>
+<div class="text-[12px] text-slate-600 space-y-0.5">
+<span class="font-bold text-slate-900 block">No booking code required</span>
+<span class="">Shared autos operate on rapid hop-on boarding. Simply show your commuter ID when boarding at Bay 4.</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+
+
+
+
+
+
+
+
+<script src="api.js"></script>
+</body></html>

@@ -1,0 +1,515 @@
+<!DOCTYPE html><html lang="en"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Driver Profile &amp; Fleet Settings - ZeroOne</title>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          colors: {
+            brand: {
+              50: '#eff6ff',
+              100: '#dbeafe',
+              500: '#3b82f6',
+              600: '#2563eb',
+              700: '#1d4ed8',
+            }
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body { font-family: 'Inter', sans-serif; }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      vertical-align: middle;
+    }
+    .material-symbols-outlined.filled {
+      font-variation-settings: 'FILL' 1;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-900 antialiased min-h-screen flex">
+<!-- 1. SIDEBAR (Clean White Sidebar with border-slate-200) -->
+<aside class="w-64 bg-white border-r border-slate-200 flex flex-col justify-between fixed inset-y-0 left-0 z-30 select-none">
+<div class="flex flex-col">
+<!-- Logo Header -->
+<div class="h-16 px-5 border-b border-slate-200 flex items-center gap-3"><a href="#" class="flex items-center"><img src="https://lh3.googleusercontent.com/aida-public/AB6AXuDcfT85FPqpyxvCe8VCzSUdMjJzCnIIymFb_ZAKk0Sw-iy7tIpoRO26vO7RkZjz-chWlOHVlvtfP0EHoVPP1hYpXAOsGhXAVSlwfdsYAzvgoHEH6aGb0TxyhGt90Ep9H6gEGi7rBihpH_FPw7fZDo6icau3xZzVuHNlu50QhpQnbKGkbEztnoNbAU_ctLrKUpHkjzVBwgkOFPuSF5R8SyhYE_-MzmuTzVWx5VN4Si1ODeiElKswwC5Sv-BSj4_1rRaWE00" alt="ZeroOne" class="h-9 max-w-full object-contain" style="height: 40px;"></a></div>
+<!-- Navigation Section -->
+<div class="px-3 pt-5">
+<div class="px-3 pb-2 text-[11px] font-semibold uppercase tracking-wider text-slate-400">
+          Driver Telemetry
+        </div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 font-medium text-sm transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px] text-slate-500">dashboard</span>
+<span class="">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 font-medium text-sm transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px] text-slate-500">trending_up</span>
+<span class="">Demand AI</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 font-medium text-sm transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px] text-slate-500">group</span>
+<span class="">Passengers</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg text-slate-600 hover:bg-slate-100 hover:text-slate-900 font-medium text-sm transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px] text-slate-500">account_balance_wallet</span>
+<span class="">Earnings</span>
+</a>
+<!-- Active Pill: Blue matching admin operations -->
+<a class="flex items-center gap-3 px-3 py-2.5 rounded-lg bg-blue-50 text-blue-700 font-semibold text-sm border border-blue-200/60 shadow-sm transition-colors" href="#">
+<span class="material-symbols-outlined text-[20px] text-blue-600 filled">settings</span>
+<span class="">Profile &amp; Settings</span>
+</a>
+</nav>
+</div>
+</div>
+<!-- Active Driver Status Card in Sidebar -->
+<div class="p-3 border-t border-slate-200">
+<div class="bg-slate-50 border border-slate-200/80 rounded-xl p-3 flex items-center gap-3">
+<div class="w-9 h-9 rounded-full bg-blue-100 border border-blue-200 text-blue-700 font-bold flex items-center justify-center text-xs">
+          VR
+        </div>
+<div class="flex flex-col min-w-0 flex-1">
+<div class="flex items-center justify-between">
+<span class="text-xs font-semibold text-slate-900 truncate">Venkat Rao</span>
+<span class="flex h-2 w-2 rounded-full bg-emerald-500" title="Online"></span>
+</div>
+<span class="text-[11px] font-mono text-slate-500">ZO-DRV-4102</span>
+</div>
+</div>
+</div>
+</aside>
+<!-- 2. MAIN CONTAINER -->
+<div class="pl-64 flex-1 flex flex-col min-h-screen">
+<!-- TOP HEADER -->
+<header class="h-16 bg-white border-b border-slate-200 sticky top-0 z-20 px-8 flex items-center justify-between">
+<!-- Breadcrumbs -->
+<div class="flex items-center gap-2 text-sm">
+<span class="text-slate-500 hover:text-slate-700 font-medium cursor-pointer">Driver Console</span>
+<span class="material-symbols-outlined text-slate-400 text-[18px]">chevron_right</span>
+<span class="text-slate-900 font-semibold">Pilot Verification &amp; Settings</span>
+</div>
+<!-- Right Header Indicators -->
+<div class="flex items-center gap-4">
+<!-- GPS Status Pill -->
+<div class="flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-50 border border-emerald-200/70 text-emerald-700 text-xs font-medium">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-600"></span>
+</span>
+<span class="">Online • GPS Synced</span>
+</div>
+<div class="h-6 w-px bg-slate-200"></div>
+<!-- Driver Profile Quick Info -->
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-full bg-slate-100 border border-slate-300 text-slate-700 font-semibold flex items-center justify-center text-xs">
+            VR
+          </div>
+<div class="flex flex-col text-left">
+<span class="text-xs font-semibold text-slate-800">Venkat Rao</span>
+<span class="text-[10px] text-slate-500 flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px] text-amber-500 filled">star</span> 4.9 Rating
+            </span>
+</div>
+</div>
+</div>
+</header>
+<!-- CONTENT AREA -->
+<main class="flex-1 p-8 space-y-6 max-w-7xl w-full">
+<!-- Page Title & Subtitle -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<h1 class="text-2xl font-bold text-slate-900 tracking-tight">Driver Profile &amp; Fleet Settings</h1>
+<p class="text-sm text-slate-500 mt-0.5">Manage pilot credentials, registered vehicle telemetry, and application preferences</p>
+</div>
+<div class="flex items-center gap-2">
+<button class="inline-flex items-center gap-1.5 px-3 py-2 bg-white border border-slate-200 rounded-lg text-xs font-medium text-slate-700 hover:bg-slate-50 transition-colors shadow-sm">
+<span class="material-symbols-outlined text-[16px] text-slate-500">history</span>
+            Audit Logs
+          </button>
+<button class="inline-flex items-center gap-1.5 px-3.5 py-2 text-white rounded-lg text-xs font-medium transition-colors shadow-sm bg-slate-900 hover:bg-slate-800">
+<span class="material-symbols-outlined text-[16px]">sync</span>
+            Sync Telemetry
+          </button>
+</div>
+</div>
+<!-- TOP PROFILE MASTER CARD (Matching reference inspect aesthetic) -->
+<div class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm">
+<div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+<div class="flex items-center gap-5">
+<!-- Initials Monogram Badge -->
+<div class="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-700 text-white flex flex-col items-center justify-center font-bold shadow-md relative flex-shrink-0">
+<span class="text-xl tracking-tight">VR</span>
+<span class="text-[9px] uppercase tracking-widest text-blue-200">Pilot</span>
+<div class="absolute -bottom-1 -right-1 bg-white rounded-full p-0.5 shadow-sm" title="Verified ShareAuto Pilot">
+<span class="material-symbols-outlined text-[18px] text-blue-600 filled">verified</span>
+</div>
+</div>
+<!-- Profile Info -->
+<div class="space-y-1.5">
+<div class="flex flex-wrap items-center gap-2.5">
+<h2 class="text-xl font-bold text-slate-900">Venkat Rao</h2>
+<span class="inline-flex items-center px-2 py-0.5 rounded-md text-xs font-mono font-medium bg-slate-100 text-slate-700 border border-slate-200">
+                  ZO-DRV-4102
+                </span>
+<span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700 border border-emerald-200/80">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                  Verified ShareAuto Pilot (RTO Telangana Validated)
+                </span>
+</div>
+<div class="flex flex-wrap items-center gap-y-1 gap-x-4 text-xs text-slate-600">
+<div class="flex items-center gap-1 font-semibold text-slate-800 bg-amber-50 text-amber-900 px-2 py-0.5 rounded border border-amber-200/80">
+<span class="material-symbols-outlined text-[14px] text-amber-600 filled">star</span>
+<span class="">4.9</span>
+<span class="font-normal text-amber-700">(1,420 trips)</span>
+</div>
+<div class="flex items-center gap-1.5 text-slate-600">
+<span class="material-symbols-outlined text-[16px] text-blue-600">alt_route</span>
+<span class="">Assigned Corridor: <strong class="text-slate-800 font-semibold">Lingampally ⇄ BHEL ⇄ Miyapur</strong></span>
+</div>
+<div class="flex items-center gap-1 text-slate-500">
+<span class="material-symbols-outlined text-[16px]">schedule</span>
+<span class="">Shift: Morning Peak (06:00 - 15:00)</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Metric Stats -->
+<div class="flex items-center gap-3 w-full lg:w-auto border-t lg:border-t-0 pt-4 lg:pt-0 border-slate-100">
+<div class="flex-1 lg:flex-none px-4 py-2.5 rounded-lg bg-slate-50 border border-slate-200 text-center lg:text-left min-w-[120px]">
+<span class="text-[10px] font-semibold uppercase tracking-wider text-slate-400 block">Fleet Standing</span>
+<span class="text-sm font-bold text-slate-900">Tier 1 Elite</span>
+</div>
+<div class="flex-1 lg:flex-none px-4 py-2.5 rounded-lg bg-slate-50 border border-slate-200 text-center lg:text-left min-w-[120px]">
+<span class="text-[10px] font-semibold uppercase tracking-wider text-slate-400 block">Safety Score</span>
+<span class="text-sm font-bold text-emerald-600 flex items-center justify-center lg:justify-start gap-0.5">
+                99.4% <span class="material-symbols-outlined text-[14px]">trending_up</span>
+</span>
+</div>
+</div>
+</div>
+</div>
+<!-- 2-COLUMN SETTINGS GRID (Cards with clean border-slate-200 matching IMAGE_2 / inspect panels) -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+<!-- CARD 1: ACCOUNT INFORMATION -->
+<div class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-4 mb-4 border-b border-slate-100">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-blue-50 border border-blue-100 text-blue-600 flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">badge</span>
+</div>
+<div>
+<h3 class="text-sm font-bold text-slate-900">Account Information</h3>
+<p class="text-xs text-slate-500">Personal telemetry and verified administrative profile</p>
+</div>
+</div>
+<button class="text-xs font-semibold text-blue-600 hover:text-blue-700 bg-blue-50 hover:bg-blue-100/70 border border-blue-200/60 px-2.5 py-1 rounded-md transition-colors">
+                Edit Details
+              </button>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+<div class="p-3 rounded-lg bg-slate-50 border border-slate-200/70">
+<span class="text-[11px] font-semibold uppercase tracking-wider text-slate-400">Legal Full Name</span>
+<p class="text-sm font-semibold text-slate-800 mt-0.5">Venkateshwarlu Rao</p>
+</div>
+<div class="p-3 rounded-lg bg-slate-50 border border-slate-200/70">
+<div class="flex items-center justify-between">
+<span class="text-[11px] font-semibold uppercase tracking-wider text-slate-400">Phone Number</span>
+<span class="text-[10px] font-semibold text-emerald-600 bg-emerald-50 px-1.5 py-0.2 rounded border border-emerald-200/60">Verified</span>
+</div>
+<p class="text-sm font-mono font-medium text-slate-800 mt-0.5">+91 98480 22341</p>
+</div>
+<div class="p-3 rounded-lg bg-slate-50 border border-slate-200/70">
+<span class="text-[11px] font-semibold uppercase tracking-wider text-slate-400">Emergency Contact</span>
+<p class="text-sm font-medium text-slate-800 mt-0.5">Laxmi Rao (Spouse)</p>
+<p class="text-xs font-mono text-slate-500">+91 98480 99812</p>
+</div>
+<div class="p-3 rounded-lg bg-slate-50 border border-slate-200/70">
+<div class="flex items-center justify-between">
+<span class="text-[11px] font-semibold uppercase tracking-wider text-slate-400">Commercial Transport Badge</span>
+<span class="text-[10px] font-semibold text-blue-700 bg-blue-50 px-1.5 py-0.2 rounded border border-blue-200/60">Active</span>
+</div>
+<p class="text-sm font-mono font-semibold text-slate-800 mt-0.5">#HYD-AUT-88291</p>
+<p class="text-[11px] text-slate-500 mt-0.5">Validated by RTA Telangana</p>
+</div>
+</div>
+</div>
+<!-- Bottom Micro Notice -->
+<div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-[11px] text-slate-500">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-slate-400">lock</span> Aadhaar e-KYC verified &amp; encrypted
+            </span>
+<span class="text-slate-400">Last updated: 14 Oct 2024</span>
+</div>
+</div>
+<!-- CARD 2: REGISTERED VEHICLE TELEMETRY -->
+<div class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-4 mb-4 border-b border-slate-100">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-indigo-50 border border-indigo-100 text-indigo-600 flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">electric_rickshaw</span>
+</div>
+<div>
+<h3 class="text-sm font-bold text-slate-900">Registered Vehicle Telemetry</h3>
+<p class="text-xs text-slate-500">Hardware specifications and fleet compliance certificates</p>
+</div>
+</div>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-semibold bg-emerald-50 text-emerald-700 border border-emerald-200/80">
+<span class="h-1.5 w-1.5 rounded-full bg-emerald-500"></span> 5-Seater CNG Pooled
+              </span>
+</div>
+<!-- Vehicle Primary Block -->
+<div class="p-4 rounded-lg bg-slate-50 border border-slate-200/80 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-4">
+<div class="space-y-1">
+<div class="flex items-center gap-2">
+<span class="text-sm font-bold text-slate-900">Bajaj RE Compact 4S CNG</span>
+<span class="text-[10px] font-mono px-1.5 py-0.5 rounded bg-slate-200 text-slate-700 font-semibold">PASSENGER CLASS</span>
+</div>
+<div class="text-base font-mono font-bold text-blue-600 tracking-wide">
+                  TS 08 UB 4192
+                </div>
+<div class="text-xs text-slate-500">
+                  Chassis: <span class="font-mono text-slate-700">MD2A24AZ9PWB48102</span> • Fuel: <span class="text-slate-700 font-medium">CNG Hybrid</span>
+</div>
+</div>
+<div class="px-3 py-2 rounded-md bg-white border border-slate-200 shadow-2xs text-center sm:text-right">
+<span class="text-[10px] uppercase font-semibold text-slate-400 block">Fleet Registration</span>
+<span class="text-xs font-mono font-bold text-emerald-700">Valid till Nov 2027</span>
+</div>
+</div>
+<!-- Vehicle Status Badges -->
+<div class="grid grid-cols-3 gap-3">
+<div class="p-2.5 rounded-lg border border-slate-200 bg-white">
+<span class="text-[10px] uppercase font-semibold text-slate-400 block">Insurance</span>
+<div class="flex items-center justify-between mt-1">
+<span class="text-xs font-semibold text-slate-800">United India</span>
+<span class="material-symbols-outlined text-[14px] text-emerald-600">check</span>
+</div>
+<span class="text-[10px] text-slate-500">Exp: 18 Oct 2025</span>
+</div>
+<div class="p-2.5 rounded-lg border border-slate-200 bg-white">
+<span class="text-[10px] uppercase font-semibold text-slate-400 block">Fitness Cert</span>
+<div class="flex items-center justify-between mt-1">
+<span class="text-xs font-semibold text-emerald-700">FC Passed</span>
+<span class="material-symbols-outlined text-[14px] text-emerald-600">check</span>
+</div>
+<span class="text-[10px] text-slate-500">Valid: Miyapur RTO</span>
+</div>
+<div class="p-2.5 rounded-lg border border-slate-200 bg-white">
+<span class="text-[10px] uppercase font-semibold text-slate-400 block">Pollution (PUC)</span>
+<div class="flex items-center justify-between mt-1">
+<span class="text-xs font-semibold text-slate-800">Green Standard</span>
+<span class="material-symbols-outlined text-[14px] text-emerald-600">check</span>
+</div>
+<span class="text-[10px] text-slate-500">Exp: 12 Jan 2026</span>
+</div>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+<span class="">OBD-II Telemetry: <strong class="text-slate-800">Active (Unit #941)</strong></span>
+<span class="text-emerald-600 font-medium">GPS Signal Strong (4G LTE)</span>
+</div>
+</div>
+<!-- CARD 3: APPLICATION PREFERENCES -->
+<div class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-4 mb-4 border-b border-slate-100">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-amber-50 border border-amber-100 text-amber-600 flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+</div>
+<div>
+<h3 class="text-sm font-bold text-slate-900">Application Preferences</h3>
+<p class="text-xs text-slate-500">Interface language, audio stand alerts, and corridor push options</p>
+</div>
+</div>
+</div>
+<!-- Language selector -->
+<div class="p-3.5 rounded-lg bg-slate-50 border border-slate-200/80 mb-3">
+<div class="flex items-center justify-between mb-2">
+<span class="text-xs font-semibold text-slate-700 uppercase tracking-wider">Interface Language</span>
+<span class="material-symbols-outlined text-[18px] text-slate-400">translate</span>
+</div>
+<div class="grid grid-cols-3 gap-2" id="langSelector">
+<button class="lang-btn py-1.5 px-3 rounded-lg text-xs font-semibold bg-white border border-blue-500 text-blue-600 shadow-sm text-center" data-lang="en" type="button">
+                  English
+                </button>
+<button class="lang-btn py-1.5 px-3 rounded-lg text-xs font-medium bg-slate-100/80 hover:bg-white text-slate-600 border border-slate-200 text-center transition-colors" data-lang="te" type="button">
+                  తెలుగు
+                </button>
+<button class="lang-btn py-1.5 px-3 rounded-lg text-xs font-medium bg-slate-100/80 hover:bg-white text-slate-600 border border-slate-200 text-center transition-colors" data-lang="hi" type="button">
+                  हिन्दी
+                </button>
+</div>
+</div>
+<!-- Toggles List -->
+<div class="space-y-3">
+<!-- Surge Alerts Toggle -->
+<div class="flex items-center justify-between p-3 rounded-lg border border-slate-200/80 hover:bg-slate-50/50 transition-colors">
+<div class="pr-3">
+<p class="text-xs font-semibold text-slate-900">Surge &amp; Demand Corridor Alerts</p>
+<p class="text-[11px] text-slate-500">Immediate notifications when Lingampally or Miyapur Hub surges</p>
+</div>
+<button aria-checked="true" class="toggle-switch relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full transition-colors duration-200 ease-in-out focus:outline-none" role="switch" type="button">
+<span class="toggle-dot translate-x-5 pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out mt-0.5 ml-0.5"></span>
+</button>
+</div>
+<!-- Audio Chime Toggle -->
+<div class="flex items-center justify-between p-3 rounded-lg border border-slate-200/80 hover:bg-slate-50/50 transition-colors">
+<div class="pr-3">
+<p class="text-xs font-semibold text-slate-900">Stand Audio Chime &amp; Haptic Alert</p>
+<p class="text-[11px] text-slate-500">Audio chime when passenger seats are booked at registered stands</p>
+</div>
+<button aria-checked="true" class="toggle-switch relative inline-flex h-6 w-11 flex-shrink-0 cursor-pointer rounded-full transition-colors duration-200 ease-in-out focus:outline-none" role="switch" type="button">
+<span class="toggle-dot translate-x-5 pointer-events-none inline-block h-5 w-5 transform rounded-full bg-white shadow ring-0 transition duration-200 ease-in-out mt-0.5 ml-0.5"></span>
+</button>
+</div>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-slate-100 text-[11px] text-slate-400">
+            Audio alerts respect device volume &amp; quiet mode hours.
+          </div>
+</div>
+<!-- CARD 4: FLEET SUPPORT & DISPATCH HELPDESK -->
+<div class="bg-white border border-slate-200 rounded-xl p-6 shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between pb-4 mb-4 border-b border-slate-100">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-rose-50 border border-rose-100 text-rose-600 flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">support_agent</span>
+</div>
+<div>
+<h3 class="text-sm font-bold text-slate-900">Fleet Support &amp; Dispatch</h3>
+<p class="text-xs text-slate-500">Stand supervisors, emergency dispatch and knowledge base</p>
+</div>
+</div>
+</div>
+<div class="space-y-2.5">
+<!-- Stand Supervisor Hotline -->
+<a class="flex items-center justify-between p-3 rounded-lg border border-slate-200 hover:border-blue-300 hover:bg-blue-50/30 transition-all group" href="tel:+914023419021">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-md bg-blue-50 text-blue-600 flex items-center justify-center group-hover:bg-blue-600 group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[18px]">call</span>
+</div>
+<div>
+<span class="text-xs font-semibold text-slate-900 group-hover:text-blue-600 transition-colors">Lingampally Stand Supervisor</span>
+<p class="text-[11px] text-slate-500">Hotline: <span class="font-mono text-slate-700 font-semibold">+91 40 2341 9021</span> (Booth 4)</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-[18px] text-slate-400 group-hover:text-blue-600 group-hover:translate-x-0.5 transition-all">chevron_right</span>
+</a>
+<!-- Report an Issue -->
+<a class="flex items-center justify-between p-3 rounded-lg border border-slate-200 hover:border-amber-300 hover:bg-amber-50/30 transition-all group" href="#">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-md bg-amber-50 text-amber-600 flex items-center justify-center group-hover:bg-amber-600 group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[18px]">report_problem</span>
+</div>
+<div>
+<span class="text-xs font-semibold text-slate-900 group-hover:text-amber-700 transition-colors">Report an Incident / Fare Discrepancy</span>
+<p class="text-[11px] text-slate-500">Log vehicle breakdown, route detour, or pooling disputes</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-[18px] text-slate-400 group-hover:text-amber-600 group-hover:translate-x-0.5 transition-all">chevron_right</span>
+</a>
+<!-- FAQs -->
+<a class="flex items-center justify-between p-3 rounded-lg border border-slate-200 hover:border-slate-300 hover:bg-slate-50 transition-all group" href="#">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-md bg-slate-100 text-slate-600 flex items-center justify-center group-hover:bg-slate-800 group-hover:text-white transition-colors">
+<span class="material-symbols-outlined text-[18px]">help_outline</span>
+</div>
+<div>
+<span class="text-xs font-semibold text-slate-900 group-hover:text-slate-800 transition-colors">Pilot Knowledge Base &amp; FAQs</span>
+<p class="text-[11px] text-slate-500">Weekly settlement cycles, UPI instant withdrawal guidelines</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-[18px] text-slate-400 group-hover:text-slate-700 group-hover:translate-x-0.5 transition-all">chevron_right</span>
+</a>
+</div>
+</div>
+<!-- Bottom Session & Logout Actions -->
+<div class="mt-4 pt-4 border-t border-slate-100 flex flex-col sm:flex-row items-center justify-between gap-3">
+<div class="flex items-center gap-3 text-[11px] text-slate-400">
+<a class="hover:text-slate-600" href="#">Privacy Policy</a>
+<span class="">•</span>
+<a class="hover:text-slate-600" href="#">Terms of Service</a>
+<span class="">•</span>
+<span class="font-mono">v2.14.0 (Build 941)</span>
+</div>
+<!-- Redesigned Logout Button -->
+<button class="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-3.5 py-1.5 rounded-lg border border-red-200 bg-red-50/60 hover:bg-red-100 text-red-600 text-xs font-semibold transition-colors shadow-2xs" id="logoutBtn" type="button">
+<span class="material-symbols-outlined text-[16px]">logout</span>
+<span class="">Log Out Pilot Session</span>
+</button>
+</div>
+</div>
+</div>
+</main>
+</div>
+<!-- Interactive Scripts -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // 1. Language Button Selector
+      const langBtns = document.querySelectorAll('.lang-btn');
+      langBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          langBtns.forEach(b => {
+            b.className = 'lang-btn py-1.5 px-3 rounded-lg text-xs font-medium bg-slate-100/80 hover:bg-white text-slate-600 border border-slate-200 text-center transition-colors';
+          });
+          btn.className = 'lang-btn py-1.5 px-3 rounded-lg text-xs font-semibold bg-white border border-blue-500 text-blue-600 shadow-sm text-center';
+        });
+      });
+
+      // 2. Toggle Switches
+      const toggles = document.querySelectorAll('.toggle-switch');
+      toggles.forEach(toggle => {
+        toggle.addEventListener('click', () => {
+          const isChecked = toggle.getAttribute('aria-checked') === 'true';
+          const dot = toggle.querySelector('.toggle-dot');
+          if (isChecked) {
+            toggle.setAttribute('aria-checked', 'false');
+            toggle.classList.remove('bg-blue-600');
+            toggle.classList.add('bg-slate-300');
+            dot.classList.remove('translate-x-5');
+            dot.classList.add('translate-x-0');
+          } else {
+            toggle.setAttribute('aria-checked', 'true');
+            toggle.classList.remove('bg-slate-300');
+            toggle.classList.add('bg-blue-600');
+            dot.classList.remove('translate-x-0');
+            dot.classList.add('translate-x-5');
+          }
+        });
+      });
+
+      // 3. Logout handler
+      const logoutBtn = document.getElementById('logoutBtn');
+      if (logoutBtn) {
+        logoutBtn.addEventListener('click', () => {
+          logoutBtn.innerHTML = '<span class="material-symbols-outlined animate-spin text-[16px]">sync</span> Ending shift...';
+          setTimeout(() => {
+            api.logout();
+          }, 400);
+        });
+      }
+    });
+  </script>
+
+
+
+
+
+
+<script src="api.js"></script>
+</body></html>
